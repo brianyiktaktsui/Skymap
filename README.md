@@ -5,9 +5,6 @@
 |Step | Code| Input description|Input dir|Output description|Output dir| Timing|
 |---- | ----| ----|----|----|----| ----|
 |download SRA metadata | ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb|none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins|
-
-
-
 |parse SRA metadata | ./SRA_META/SRAManager.py |  SRA files in XML formats|/nrnb/users/btsui/tmp/SRA_META/| list of pandas series containing list of (SRS,attribute, freetext) | /cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/| 20 mins
 |merge SRA metadata | ./SRA_META/SRAmerge.py | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| 
 
@@ -125,9 +122,9 @@ output: allAttrib.v\d.csv.pyc
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 5884 bytes to README.md
-    [master 6d6619e] updated: README
-     1 file changed, 25 insertions(+), 12 deletions(-)
+    [NbConvertApp] Writing 5844 bytes to README.md
+    [master b063c6e] updated: README
+     1 file changed, 12 insertions(+), 22 deletions(-)
     warning: push.default is unset; its implicit value has changed in
     Git 2.0 from 'matching' to 'simple'. To squelch this message
     and maintain the traditional behavior, use:
@@ -152,9 +149,9 @@ output: allAttrib.v\d.csv.pyc
     Counting objects: 3, done.
     Delta compression using up to 96 threads.
     Compressing objects: 100% (2/2), done.
-    Writing objects: 100% (3/3), 602 bytes | 0 bytes/s, done.
+    Writing objects: 100% (3/3), 630 bytes | 0 bytes/s, done.
     Total 3 (delta 1), reused 0 (delta 0)
     remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
     To git@github.com:brianyiktaktsui/AllPipes.git
-       b094bc1..6d6619e  master -> master
+       6d6619e..b063c6e  master -> master
 
