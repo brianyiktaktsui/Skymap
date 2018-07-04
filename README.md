@@ -3,7 +3,7 @@
 
 
 |Step | Code| Input description|Input dir|Output description|Output dir| Timing|
-|---------|---------|------|---|
+|---- | ----| ----|----|----|----| ----|
 |download SRA metadata | ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb|none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins|
 
 
@@ -125,26 +125,9 @@ output: allAttrib.v\d.csv.pyc
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 5789 bytes to README.md
-    On branch master
-    Your branch is up-to-date with 'origin/master'.
-    Untracked files:
-    	[31m.ipynb_checkpoints/[m
-    	[31mAnalysis/[m
-    	[31mAnalyzeReferences/[m
-    	[31mBS_aling/[m
-    	[31mChip-seq/[m
-    	[31mDownloadGenome/[m
-    	[31mMicrobiome/[m
-    	[31mNLP_spacy/[m
-    	[31mPipelines/[m
-    	[31mREADME.ipynb[m
-    	[31mRNAseq/[m
-    	[31mSRA_META/[m
-    	[31mXGS_WGS/[m
-    	[31mold_README[m
-    
-    nothing added to commit but untracked files present
+    [NbConvertApp] Writing 5884 bytes to README.md
+    [master 6d6619e] updated: README
+     1 file changed, 25 insertions(+), 12 deletions(-)
     warning: push.default is unset; its implicit value has changed in
     Git 2.0 from 'matching' to 'simple'. To squelch this message
     and maintain the traditional behavior, use:
@@ -166,5 +149,12 @@ output: allAttrib.v\d.csv.pyc
     (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
     'current' instead of 'simple' if you sometimes use older versions of Git)
     
-    Everything up-to-date
+    Counting objects: 3, done.
+    Delta compression using up to 96 threads.
+    Compressing objects: 100% (2/2), done.
+    Writing objects: 100% (3/3), 602 bytes | 0 bytes/s, done.
+    Total 3 (delta 1), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+    To git@github.com:brianyiktaktsui/AllPipes.git
+       b094bc1..6d6619e  master -> master
 
