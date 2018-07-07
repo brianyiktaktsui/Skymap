@@ -1,9 +1,9 @@
 
 # In short
 Skymap is a standalone database that offers: 
-1. **a single data matrix** for each omic layer for each species that [spans >200k sequencing runs from all the public studies](https://www.ncbi.nlm.nih.gov/sra), which is done by reprocessing **petabytes** worth of sequencing data. Here is how much published data are out there: 
-![alt text](./Figures/sra_data_availability.png "Logo Title Text 1")
-
+1. **a single data matrix** for each omic layer for each species that [spans >200k sequencing runs from all the public studies](https://www.ncbi.nlm.nih.gov/sra), which is done by reprocessing **petabytes** worth of sequencing data. Here is how much published data are deposited in SRA: 
+![alt text](./Figures/sra_data_availability.png "Logo Title Text 1")**And here is how much data we have processed from SRA:**
+![alt text](./Figures/sra_data_processed.png)
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
 3. **a techinical metadata file** that describe the relationships between the sequencing runs. 
 
@@ -92,9 +92,9 @@ If you happen to want to make a copy of the pipeline, you probably want to be be
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 15932 bytes to README.md
-    [master 653eb72] updated: README
-     1 file changed, 61 insertions(+), 4 deletions(-)
+    [NbConvertApp] Writing 9653 bytes to README.md
+    [master 4a03595] updated: README
+     1 file changed, 29 insertions(+), 110 deletions(-)
     warning: push.default is unset; its implicit value has changed in
     Git 2.0 from 'matching' to 'simple'. To squelch this message
     and maintain the traditional behavior, use:
@@ -119,13 +119,13 @@ If you happen to want to make a copy of the pipeline, you probably want to be be
     Counting objects: 3, done.
     Delta compression using up to 96 threads.
     Compressing objects: 100% (3/3), done.
-    Writing objects: 100% (3/3), 848 bytes | 0 bytes/s, done.
+    Writing objects: 100% (3/3), 898 bytes | 0 bytes/s, done.
     Total 3 (delta 1), reused 0 (delta 0)
     remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
     remote: This repository moved. Please use the new location:[K
     remote:   git@github.com:brianyiktaktsui/Skymap.git[K
     To git@github.com:brianyiktaktsui/AllPipes.git
-       ab2f88f..653eb72  master -> master
+       653eb72..4a03595  master -> master
 
 
 |Steps | Code| Input description|Input dir|Output description|Output dir| Timing|
