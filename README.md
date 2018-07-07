@@ -35,35 +35,6 @@ Table of Contents
 
 
 
-# In long
-## Motivation: Pooling processed data from multiple studies is time-consuming: 
-When I first started in bioinformatic couple years ago, I spent much of my time doing two things: 1.) cleaning omic data matrices, e.g. mapping between gene IDs (hgnc, enseml, ucsc, etc.) for processed data matrices, trying all sort of different bioinformatics pipelines that yield basically the same results, investigating what is the exact unit being counted over when pulling pre-processed data from public database, etc.  2.) cleaning metadata annotation, which usually involves extracting and aliasing the labels to the exact same categories. 
-
-
-This question came to my mind: Can we merge and reduce the petabytes worth of raw reads into a single table that: 1.) captures the commonly used information which can 2.) also fit in your hard drive (<500Gb)? 
-
-## Solution: An automated pipeline to generate a single data matrix that does simple counting for each specie and omic layer 
-What I am offering in here is a metadata table and a single data matrix for each omic layer that encapsulate majority of the public data out there by continuously pulling data from [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra), a place that host the bulk of the published sequencing data. I believe that "Science started with counting" (from "Cancer: Emperor of all malady" by Siddhartha Mukherjee), and thus I offer counts for all the features: 1. ) the  base resolution ACGT counts for over 200k experiments among NCBI curated SNPs, where read depth and allelic fraction are usually the main drivers for SNP calling. We also offer an expression matrix, which counts at both transcript and gene resolution. With the raw counts, you can normalize however you want. 
-The metadata table consists of controlled vocabulary (NCI Terminology) from free text experiment annotations. I used the NLM metamap engine for extracting keywords from freetext. The nice thing is that the UMLS ecosystem from NLM allow the IDs (Concept Unique Identifiers) to be mapped onto different ontologies to relate the terms. NCIT is by far the cleanest general purpose ontology I have seen, low term redundancy, encode medical knowledge from many domains and is well maintained.  
-The pipeline in here is trying to suit the needs of the common use cases. In another word, most pipelines out there are more like sport cars, having custom flavors for a specific group of drivers. What I am trying to create is more like a train system, aiming to suit most needs. Unfortunately, if you have more specific requirements, what I am offering is probably not going to work. 
-
-
-Here are the overview slides for the overall processes of [allelic read counts extraction over 300k known SNPs](https://docs.google.com/presentation/d/1KcumgtLfCdHNnIwkbU5DaQ7UNKHGbJ_fJZFy1cj53yE/edit#slide=id.p3), [RNAseq quantification and NLP processing](https://docs.google.com/presentation/d/14vLJJQ6ziw-2aLDoQAJGyv1sYo5ENzljsqsbZr9jNLM/edit#slide=id.p19), explaining 1.) why the data is something that you can trust and 2.) also the utility of fast data interpolation, which is especially useful for aggregating multiple studies/batches to support your hypothesis. 
-
-## Why Skymap while there are so many groups out there also trying to unify the public data
-To the best of my knowledge, Skymap is the first that offer both the unified omic data and the cleaned metadata. The other important aspect is that the process of data extraction is fully automated, so it is supposed to be scalable and systematic. 
-
-## Why Skymap offer a local copy instead of a web api 
-Again, the purpose of this project is more geared towards bioinformatics/ data scientists, who wants go from vast amount of data to hypothesis quickly. I hate when I have to recover a simple table by requesting each row from REST api repeately, which should have only required one click on an ftp link. It turns out that even [all the raw meta data from SRA can fit into memory](https://github.com/brianyiktaktsui/Skymap/blob/master/Load_RawMetaData.ipynb). 
-
-The premise of skymap is this: Couple clicks and all the omic data sits in your computer. And you can slice and dice it however you want afterwards. 
-
-## Data format and coding style
-
-The storage is in python pandas pickle format. Therefore, the only packges you need to load in the data is numpy and pandas, the backbone of data analysis in python. We keep the process of data loading as lean as possible. Less code means less bugs and less errors. For now, Skymap is geared towards ML/data science folks who are hungry for the vast amount of data and ain't afraid of coding. I will port the data to native HDF5 format to reduce platform dependency once I get a chance. 
-
-I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
-
 
 # More examples on using simple code to analyze big data
 
@@ -108,6 +79,36 @@ Term of use: Use Skymap however you want. Just dont sue me, I have no money.
 
 For why I named it Skymap, I forgot.
 
+# In long
+## Motivation: Pooling processed data from multiple studies is time-consuming: 
+When I first started in bioinformatic couple years ago, I spent much of my time doing two things: 1.) cleaning omic data matrices, e.g. mapping between gene IDs (hgnc, enseml, ucsc, etc.) for processed data matrices, trying all sort of different bioinformatics pipelines that yield basically the same results, investigating what is the exact unit being counted over when pulling pre-processed data from public database, etc.  2.) cleaning metadata annotation, which usually involves extracting and aliasing the labels to the exact same categories. 
+
+
+This question came to my mind: Can we merge and reduce the petabytes worth of raw reads into a single table that: 1.) captures the commonly used information which can 2.) also fit in your hard drive (<500Gb)? 
+
+## Solution: An automated pipeline to generate a single data matrix that does simple counting for each specie and omic layer 
+What I am offering in here is a metadata table and a single data matrix for each omic layer that encapsulate majority of the public data out there by continuously pulling data from [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra), a place that host the bulk of the published sequencing data. I believe that "Science started with counting" (from "Cancer: Emperor of all malady" by Siddhartha Mukherjee), and thus I offer counts for all the features: 1. ) the  base resolution ACGT counts for over 200k experiments among NCBI curated SNPs, where read depth and allelic fraction are usually the main drivers for SNP calling. We also offer an expression matrix, which counts at both transcript and gene resolution. With the raw counts, you can normalize however you want. 
+The metadata table consists of controlled vocabulary (NCI Terminology) from free text experiment annotations. I used the NLM metamap engine for extracting keywords from freetext. The nice thing is that the UMLS ecosystem from NLM allow the IDs (Concept Unique Identifiers) to be mapped onto different ontologies to relate the terms. NCIT is by far the cleanest general purpose ontology I have seen, low term redundancy, encode medical knowledge from many domains and is well maintained.  
+The pipeline in here is trying to suit the needs of the common use cases. In another word, most pipelines out there are more like sport cars, having custom flavors for a specific group of drivers. What I am trying to create is more like a train system, aiming to suit most needs. Unfortunately, if you have more specific requirements, what I am offering is probably not going to work. 
+
+
+Here are the overview slides for the overall processes of [allelic read counts extraction over 300k known SNPs](https://docs.google.com/presentation/d/1KcumgtLfCdHNnIwkbU5DaQ7UNKHGbJ_fJZFy1cj53yE/edit#slide=id.p3), [RNAseq quantification and NLP processing](https://docs.google.com/presentation/d/14vLJJQ6ziw-2aLDoQAJGyv1sYo5ENzljsqsbZr9jNLM/edit#slide=id.p19), explaining 1.) why the data is something that you can trust and 2.) also the utility of fast data interpolation, which is especially useful for aggregating multiple studies/batches to support your hypothesis. 
+
+## Why Skymap while there are so many groups out there also trying to unify the public data
+To the best of my knowledge, Skymap is the first that offer both the unified omic data and the cleaned metadata. The other important aspect is that the process of data extraction is fully automated, so it is supposed to be scalable and systematic. 
+
+## Why Skymap offer a local copy instead of a web api 
+Again, the purpose of this project is more geared towards bioinformatics/ data scientists, who wants go from vast amount of data to hypothesis quickly. I hate when I have to recover a simple table by requesting each row from REST api repeately, which should have only required one click on an ftp link. It turns out that even [all the raw meta data from SRA can fit into memory](https://github.com/brianyiktaktsui/Skymap/blob/master/Load_RawMetaData.ipynb). 
+
+The premise of skymap is this: Couple clicks and all the omic data sits in your computer. And you can slice and dice it however you want afterwards. 
+
+## Data format and coding style
+
+The storage is in python pandas pickle format. Therefore, the only packges you need to load in the data is numpy and pandas, the backbone of data analysis in python. We keep the process of data loading as lean as possible. Less code means less bugs and less errors. For now, Skymap is geared towards ML/data science folks who are hungry for the vast amount of data and ain't afraid of coding. I will port the data to native HDF5 format to reduce platform dependency once I get a chance. 
+
+I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
+
+
 
 
 ```python
@@ -118,43 +119,7 @@ For why I named it Skymap, I forgot.
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 31973 bytes to README.md
-    [master f82bdfd] updated: README
-     5 files changed, 786 insertions(+), 9 deletions(-)
-     create mode 100644 Figures/README
-     create mode 100644 Figures/heirachy_Trp53.png
-     create mode 100644 Figures/heirachy_time.png
-     create mode 100644 Figures/sra_data_availability.png
-    warning: push.default is unset; its implicit value has changed in
-    Git 2.0 from 'matching' to 'simple'. To squelch this message
-    and maintain the traditional behavior, use:
-    
-      git config --global push.default matching
-    
-    To squelch this message and adopt the new behavior now, use:
-    
-      git config --global push.default simple
-    
-    When push.default is set to 'matching', git will push local branches
-    to the remote branches that already exist with the same name.
-    
-    Since Git 2.0, Git defaults to the more conservative 'simple'
-    behavior, which only pushes the current branch to the corresponding
-    remote branch that 'git pull' uses to update the current branch.
-    
-    See 'git help config' and search for 'push.default' for further information.
-    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
-    'current' instead of 'simple' if you sometimes use older versions of Git)
-    
-    Counting objects: 8, done.
-    Delta compression using up to 96 threads.
-    Compressing objects: 100% (7/7), done.
-    Writing objects: 100% (8/8), 3.33 MiB | 0 bytes/s, done.
-    Total 8 (delta 0), reused 0 (delta 0)
-    remote: This repository moved. Please use the new location:[K
-    remote:   git@github.com:brianyiktaktsui/Skymap.git[K
-    To git@github.com:brianyiktaktsui/AllPipes.git
-       511e331..f82bdfd  master -> master
+    [NbConvertApp] Writing 15428 bytes to README.md
 
 
 
