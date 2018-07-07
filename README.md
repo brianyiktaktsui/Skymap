@@ -44,7 +44,7 @@ https://www.synapse.org/#!Synapse:syn11415602/wiki/492470
 
 
 ## High resolution mouse developmental hierachy map
-[Link](https://github.com/brianyiktaktsui/Skymap/blob/master/jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb
+[jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb
 )
 
 Aggregating many studies (node) to form a smooth mouse developmental hierachy map. By integrating the vast amount of public data, we can cover many developmental time points, which sometime we can see a more transient expression dynamics both across tissues and within tissues over developmental time course. 
@@ -113,18 +113,75 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 
 ```python
 !jupyter nbconvert --to markdown README.ipynb
-!git add README.md #./Figures/*
+!git add ./jupyter-notebooks/clean_notebooks/*
 !git commit -m "updated: README"
 !git push 
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 13740 bytes to README.md
+    [NbConvertApp] Writing 15704 bytes to README.md
+    [master ab2f88f] updated: README
+     4 files changed, 2430 insertions(+)
+     create mode 100644 jupyter-notebooks/clean_notebooks/AllSeqBySpecies.ipynb
+     create mode 100644 jupyter-notebooks/clean_notebooks/CompareTCGA_alignment_w_mine_pipe.ipynb
+     create mode 100644 jupyter-notebooks/clean_notebooks/README
+     create mode 100644 jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb
+    warning: push.default is unset; its implicit value has changed in
+    Git 2.0 from 'matching' to 'simple'. To squelch this message
+    and maintain the traditional behavior, use:
+    
+      git config --global push.default matching
+    
+    To squelch this message and adopt the new behavior now, use:
+    
+      git config --global push.default simple
+    
+    When push.default is set to 'matching', git will push local branches
+    to the remote branches that already exist with the same name.
+    
+    Since Git 2.0, Git defaults to the more conservative 'simple'
+    behavior, which only pushes the current branch to the corresponding
+    remote branch that 'git pull' uses to update the current branch.
+    
+    See 'git help config' and search for 'push.default' for further information.
+    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+    'current' instead of 'simple' if you sometimes use older versions of Git)
+    
+    Counting objects: 7, done.
+    Delta compression using up to 96 threads.
+    Compressing objects: 100% (6/6), done.
+    Writing objects: 100% (7/7), 570.55 KiB | 0 bytes/s, done.
+    Total 7 (delta 0), reused 0 (delta 0)
+    remote: This repository moved. Please use the new location:[K
+    remote:   git@github.com:brianyiktaktsui/Skymap.git[K
+    To git@github.com:brianyiktaktsui/AllPipes.git
+       da529fb..ab2f88f  master -> master
 
 
 
 ```python
-#!cp -r ./Skymap_legacy-master/Figures/ ./Figures
+#!mkdir clean_notebooks
+```
+
+
+```python
+!ls ./Skymap_legacy-master/
+```
+
+    DataSlicingExample.ipynb			Load_RawMetaData.ipynb
+    Figures						README.md
+    FindStudiesWithBrafV600Mutated.ipynb		code
+    FindStudiesWithBrafV600Mutated_without_demo.md	jupyter-notebooks
+
+
+
+```python
+#!ls ./jupyter-notebooks
+```
+
+
+```python
+#!cp -r ./Skymap_legacy-master/jupyter-notebooks/ ./jupyter-notebooks
 ```
 
 # TO UPDATE SRA META DATA
