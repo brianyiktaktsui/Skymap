@@ -119,7 +119,7 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 15428 bytes to README.md
+    [NbConvertApp] Writing 13740 bytes to README.md
 
 
 
