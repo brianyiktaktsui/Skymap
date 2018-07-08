@@ -13,6 +13,7 @@ Skymap is a standalone database that offers:
 **If you intend to run the examples, please first download the data from here:** 
 * https://www.synapse.org/skymap (take < 3 minutes to set up the account). 
 
+Feel free to contact me at: btsui@eng.ucsd.edu
 
 # More examples on using simple code to analyze big data
 
@@ -104,9 +105,9 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 17932 bytes to README.md
-    [master 1d7f993] updated: README
-     1 file changed, 196 insertions(+), 19 deletions(-)
+    [NbConvertApp] Writing 8423 bytes to README.md
+    [master 9c26335] updated: README
+     1 file changed, 6 insertions(+), 228 deletions(-)
     warning: push.default is unset; its implicit value has changed in
     Git 2.0 from 'matching' to 'simple'. To squelch this message
     and maintain the traditional behavior, use:
@@ -131,11 +132,11 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
     Counting objects: 3, done.
     Delta compression using up to 96 threads.
     Compressing objects: 100% (3/3), done.
-    Writing objects: 100% (3/3), 3.12 KiB | 0 bytes/s, done.
+    Writing objects: 100% (3/3), 452 bytes | 0 bytes/s, done.
     Total 3 (delta 1), reused 0 (delta 0)
     remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
     remote: This repository moved. Please use the new location:[K
     remote:   git@github.com:brianyiktaktsui/Skymap.git[K
     To git@github.com:brianyiktaktsui/AllPipes.git
-       16ed0f6..1d7f993  master -> master
+       1d7f993..9c26335  master -> master
 
