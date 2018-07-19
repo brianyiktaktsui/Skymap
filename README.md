@@ -74,7 +74,7 @@ If you want to understand meta-analyisis using RNAseq and extracted metadata, I 
 
 If you happen to want to make a copy of the pipeline, you probably want to be be more careful about it. 
 
-### TO UPDATE SRA META DATA
+### Download, parse and merge SRA META DATA
 
 
 |Steps | Code| Input description|Input dir|Output description|Output dir| Timing|
@@ -94,7 +94,11 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
 |---- | ----| ----|----|----|----| ----|
 |SNP extraction | ./Pipelines/snp/calculate_unprocessed.py|
 |calculating reads coverage | ./Pipelines/chip/calculate_unprocessed.py|
-|RNAseq| ./Pipelines/RNAseq/calculate_unprocessed.py |
+|RNAseq quantification| ./Pipelines/RNAseq/calculate_unprocessed.py |
+|merge SNP alignment statistics | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Analysis/merge_variant_aligning_statistics.ipynb
+
+
+
 
 
 ```python
@@ -105,9 +109,9 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 8423 bytes to README.md
-    [master 9c26335] updated: README
-     1 file changed, 6 insertions(+), 228 deletions(-)
+    [NbConvertApp] Writing 8469 bytes to README.md
+    [master 506ac30] updated: README
+     1 file changed, 6 insertions(+), 5 deletions(-)
     warning: push.default is unset; its implicit value has changed in
     Git 2.0 from 'matching' to 'simple'. To squelch this message
     and maintain the traditional behavior, use:
@@ -132,11 +136,11 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
     Counting objects: 3, done.
     Delta compression using up to 96 threads.
     Compressing objects: 100% (3/3), done.
-    Writing objects: 100% (3/3), 452 bytes | 0 bytes/s, done.
+    Writing objects: 100% (3/3), 508 bytes | 0 bytes/s, done.
     Total 3 (delta 1), reused 0 (delta 0)
     remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
     remote: This repository moved. Please use the new location:[K
     remote:   git@github.com:brianyiktaktsui/Skymap.git[K
     To git@github.com:brianyiktaktsui/AllPipes.git
-       1d7f993..9c26335  master -> master
+       9c26335..506ac30  master -> master
 
