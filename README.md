@@ -121,44 +121,16 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 
 ```python
 !jupyter nbconvert --to markdown README.ipynb
-!git add README.md #./jupyter-notebooks/clean_notebooks/*
+!git add README.md ./Figures/sra_data_processed.png #./jupyter-notebooks/clean_notebooks/*
 !git commit -m "updated: README"
 !git push 
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 8652 bytes to README.md
-    [master c39cddd] updated: README
-     1 file changed, 11 insertions(+), 7 deletions(-)
-    warning: push.default is unset; its implicit value has changed in
-    Git 2.0 from 'matching' to 'simple'. To squelch this message
-    and maintain the traditional behavior, use:
-    
-      git config --global push.default matching
-    
-    To squelch this message and adopt the new behavior now, use:
-    
-      git config --global push.default simple
-    
-    When push.default is set to 'matching', git will push local branches
-    to the remote branches that already exist with the same name.
-    
-    Since Git 2.0, Git defaults to the more conservative 'simple'
-    behavior, which only pushes the current branch to the corresponding
-    remote branch that 'git pull' uses to update the current branch.
-    
-    See 'git help config' and search for 'push.default' for further information.
-    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
-    'current' instead of 'simple' if you sometimes use older versions of Git)
-    
-    Counting objects: 3, done.
-    Delta compression using up to 32 threads.
-    Compressing objects: 100% (3/3), done.
-    Writing objects: 100% (3/3), 589 bytes | 0 bytes/s, done.
-    Total 3 (delta 1), reused 0 (delta 0)
-    remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
-    remote: This repository moved. Please use the new location:[K
-    remote:   git@github.com:brianyiktaktsui/Skymap.git[K
-    To git@github.com:brianyiktaktsui/AllPipes.git
-       506ac30..c39cddd  master -> master
+    [NbConvertApp] Writing 8987 bytes to README.md
 
+
+
+```python
+#!ls ./Figures/sra_data_processed.png
+```
