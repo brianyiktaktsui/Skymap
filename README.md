@@ -1,7 +1,12 @@
 
+**Feel free to contact me at**: btsui@eng.ucsd.edu if you have any question. 
+
+
 # In short
+
+
 Skymap is a standalone database that offers: 
-1. **a single data matrix** for each omic layer for each species that [spans >200k sequencing runs from all the public studies](https://www.ncbi.nlm.nih.gov/sra), which is done by reprocessing **petabytes** worth of sequencing data. Here is how much published data are deposited in SRA: 
+1. **a single data matrix** for each omic layer for each species that spans >200k sequencing runs from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much published data are deposited in SRA: 
 ![alt text](./Figures/sra_data_availability.png "Logo Title Text 1")**And here is how much data we have processed from SRA:**
 ![alt text](./Figures/sra_data_processed.png)
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
@@ -13,9 +18,8 @@ Skymap is a standalone database that offers:
 **If you intend to run the examples, please first download the data from here:** 
 * https://www.synapse.org/skymap (take < 3 minutes to set up the account). 
 
-Feel free to contact me at: btsui@eng.ucsd.edu
 
-# More examples on using simple code to analyze big data
+# Examples: simple code to analyze big data
 
 
 ## High resolution mouse developmental hierachy map
@@ -41,42 +45,25 @@ The code for the pipelines is here:
 https://github.com/brianyiktaktsui/Skymap/tree/master/code
 
 Skymap is still in Beta V0.0. [Please feel free to leave comments](https://www.synapse.org/#!Synapse:syn11415602/discussion/default) and suggestions!!! We would love to hear feedbacks from you.
-## Acknowledgement
-
-
-Please considering citing if you are using Skymap. (doi:10.7303/syn11415602)
-
-Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov,Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
-The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
-Grant money that make this work possible: NIH DP5OD017937,GM103504
-
-Term of use: Use Skymap however you want. Just dont sue me, I have no money. 
-
-For why I named it Skymap, I forgot.
-
-## Data format and coding style
-
-The storage is in python pandas pickle format. Therefore, the only packges you need to load in the data is numpy and pandas, the backbone of data analysis in python. We keep the process of data loading as lean as possible. Less code means less bugs and less errors. For now, Skymap is geared towards ML/data science folks who are hungry for the vast amount of data and ain't afraid of coding. I will port the data to native HDF5 format to reduce platform dependency once I get a chance. 
-
-I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
 
 
 
-## Methods
-If you want to better understand the NLP platform, I have another github page for the NLP explanation: 
-* [Deep biomedical named  NLP engine](https://github.com/brianyiktaktsui/DEEP_NLP)
 
-If you want to understand meta-analyisis using RNAseq and extracted metadata, I have written an manuscript that kinda explain that: 
-* [legacy Skymap for RNAseq and using Metamap as NLP engine](https://docs.google.com/document/d/1_nES7vroX7lCwf5NSNBVZ1k2iubYm5wLeFqusq5aZuk) 
+## Methods (Manuscripts)
+
+| Description | URL to google docs | github|  
+| ---: | ---: | ---: | 
+| Metaanalysis using NLP (Metamap) and reprocessed RNAseq data | https://docs.google.com/document/d/1_nES7vroX7lCwf5NSNBVZ1k2iubYm5wLeFqusq5aZuk |  |
+| Deep biomedical named entity recognition NLP engine | https://docs.google.com/document/d/1_nES7vroX7lCwf5NSNBVZ1k2iubYm5wLeFqusq5aZuk | https://github.com/brianyiktaktsui/DEEP_NLP |
 
 
-# update pipeline
+#  Pipeline
 
-If you happen to want to make a copy of the pipeline, you probably want to be be more careful about it. 
+If you happen to want to dig into the gut and gore make a copy of the pipeline, the code are documented as the followings
+
+
 
 ### Download, parse and merge SRA META DATA
-
-
 |Steps | Code| Input description|Input dir|Output description|Output dir| Timing|
 |---- | ----| ----|----|----|----| ----|
 |download SRA metadata | ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb|none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins|
@@ -97,6 +84,37 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
 |RNAseq quantification| ./Pipelines/RNAseq/calculate_unprocessed.py |
 |merge SNP alignment statistics | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Analysis/merge_variant_aligning_statistics.ipynb
 
+ 
+ Details of benchmarking against TCGA are located at: 
+
+http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/XGS_WGS/README_TCGA_benchmark.ipynb
+
+However, due to the fact where patients allele informations are protected, we are not providing the allellic read counts for TCGA. 
+
+## Acknowledgement
+
+
+Please considering citing if you are using Skymap. (doi:10.7303/syn11415602)
+
+(https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf)
+
+
+Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov,Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
+The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
+Grant money that make this work possible: NIH DP5OD017937,GM103504
+
+
+Term of use: Use Skymap however you want. Just dont sue me, I have no money. 
+
+
+
+For why I named it Skymap, I forgot.
+
+## Data format and coding style
+
+The storage is in python pandas pickle format. Therefore, the only packges you need to load in the data is numpy and pandas, the backbone of data analysis in python. We keep the process of data loading as lean as possible. Less code means less bugs and less errors. For now, Skymap is geared towards ML/data science folks who are hungry for the vast amount of data and ain't afraid of coding. I will port the data to native HDF5 format to reduce platform dependency once I get a chance. 
+
+I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
 
 
 
@@ -109,9 +127,9 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 8469 bytes to README.md
-    [master 506ac30] updated: README
-     1 file changed, 6 insertions(+), 5 deletions(-)
+    [NbConvertApp] Writing 8652 bytes to README.md
+    [master c39cddd] updated: README
+     1 file changed, 11 insertions(+), 7 deletions(-)
     warning: push.default is unset; its implicit value has changed in
     Git 2.0 from 'matching' to 'simple'. To squelch this message
     and maintain the traditional behavior, use:
@@ -134,13 +152,13 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
     'current' instead of 'simple' if you sometimes use older versions of Git)
     
     Counting objects: 3, done.
-    Delta compression using up to 96 threads.
+    Delta compression using up to 32 threads.
     Compressing objects: 100% (3/3), done.
-    Writing objects: 100% (3/3), 508 bytes | 0 bytes/s, done.
+    Writing objects: 100% (3/3), 589 bytes | 0 bytes/s, done.
     Total 3 (delta 1), reused 0 (delta 0)
     remote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
     remote: This repository moved. Please use the new location:[K
     remote:   git@github.com:brianyiktaktsui/Skymap.git[K
     To git@github.com:brianyiktaktsui/AllPipes.git
-       9c26335..506ac30  master -> master
+       506ac30..c39cddd  master -> master
 
