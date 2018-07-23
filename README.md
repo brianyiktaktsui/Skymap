@@ -120,6 +120,19 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 
 
 ```python
+!git pull
+```
+
+    remote: Counting objects: 3, done.[K
+    remote: Compressing objects: 100% (3/3), done.[K
+    remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0[K
+    Unpacking objects: 100% (3/3), done.
+    From github.com:brianyiktaktsui/AllPipes
+       c39cddd..c9c1567  master     -> origin/master
+    [20A[m[1;71H[7mModified[22;16H[m              [7m[ Can now UnJustify! ][m[K[24;45Hjustify   [7m^_[m Go To Lineaster' of github.com:brianyiktaktsui/AllPipes[22;16H[7m[ line 1/8 (12%), col 1/61 (1%), char 0/288 (0%) ]
+
+
+```python
 !jupyter nbconvert --to markdown README.ipynb
 !git add README.md ./Figures/sra_data_processed.png #./jupyter-notebooks/clean_notebooks/*
 !git commit -m "updated: README"
@@ -127,98 +140,34 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 7508 bytes to README.md
-    [master f1857c4] updated: README
-     1 file changed, 7 insertions(+), 35 deletions(-)
-    warning: push.default is unset; its implicit value has changed in
-    Git 2.0 from 'matching' to 'simple'. To squelch this message
-    and maintain the traditional behavior, use:
-    
-      git config --global push.default matching
-    
-    To squelch this message and adopt the new behavior now, use:
-    
-      git config --global push.default simple
-    
-    When push.default is set to 'matching', git will push local branches
-    to the remote branches that already exist with the same name.
-    
-    Since Git 2.0, Git defaults to the more conservative 'simple'
-    behavior, which only pushes the current branch to the corresponding
-    remote branch that 'git pull' uses to update the current branch.
-    
-    See 'git help config' and search for 'push.default' for further information.
-    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
-    'current' instead of 'simple' if you sometimes use older versions of Git)
-    
+    [NbConvertApp] Writing 11053 bytes to README.md
+    [master ce3d59a] updated: README
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 ISMB_poster_Skymap.pdf
     To git@github.com:brianyiktaktsui/AllPipes.git
-     ! [rejected]        master -> master (fetch first)
+     ! [rejected]        master -> master (non-fast-forward)
     error: failed to push some refs to 'git@github.com:brianyiktaktsui/AllPipes.git'
-    hint: Updates were rejected because the remote contains work that you do
-    hint: not have locally. This is usually caused by another repository pushing
-    hint: to the same ref. You may want to first integrate the remote changes
-    hint: (e.g., 'git pull ...') before pushing again.
+    hint: Updates were rejected because the tip of your current branch is behind
+    hint: its remote counterpart. Integrate the remote changes (e.g.
+    hint: 'git pull ...') before pushing again.
     hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 
 
 ```python
-!git add README.md ./Figures/sra_data_processed.png #./jupyter-notebooks/clean_notebooks/*
-!git commit -m "updated: README"
-!git push 
+!git config --global push.default simple
+
 ```
-
-    On branch master
-    Your branch is ahead of 'origin/master' by 2 commits.
-      (use "git push" to publish your local commits)
-    Untracked files:
-    	[31m.ipynb_checkpoints/[m
-    	[31mAnalysis/[m
-    	[31mAnalyzeReferences/[m
-    	[31mBS_aling/[m
-    	[31mChip-seq/[m
-    	[31mDownloadGenome/[m
-    	[31mFigures/LibraryLayout.pdf[m
-    	[31mFigures/LibraryLayout.png[m
-    	[31mFigures/sra_data_processed.pdf[m
-    	[31mMicrobiome/[m
-    	[31mNLP_spacy/[m
-    	[31mPipelines/[m
-    	[31mREADME.ipynb[m
-    	[31mRNAseq/[m
-    	[31mSRA_META/[m
-    	[31mSkymap_legacy-master.zip[m
-    	[31mSkymap_legacy-master/[m
-    	[31mUntitled.ipynb[m
-    	[31mXGS_WGS/[m
-    	[31mjupyter-notebooks/readme[m
-    	[31mold_README[m
-    
-    nothing added to commit but untracked files present
-    warning: push.default is unset; its implicit value has changed in
-    Git 2.0 from 'matching' to 'simple'. To squelch this message
-    and maintain the traditional behavior, use:
-    
-      git config --global push.default matching
-    
-    To squelch this message and adopt the new behavior now, use:
-    
-      git config --global push.default simple
-    
-    When push.default is set to 'matching', git will push local branches
-    to the remote branches that already exist with the same name.
-    
-    Since Git 2.0, Git defaults to the more conservative 'simple'
-    behavior, which only pushes the current branch to the corresponding
-    remote branch that 'git pull' uses to update the current branch.
-    
-    See 'git help config' and search for 'push.default' for further information.
-    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
-    'current' instead of 'simple' if you sometimes use older versions of Git)
-    
-
 
 
 ```python
 #!ls ./Figures/sra_data_processed.png
 ```
+
+
+```python
+!pwd
+```
+
+    /cellar/users/btsui/Project/METAMAP/notebook/RapMapTest
+
