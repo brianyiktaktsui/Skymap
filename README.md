@@ -19,6 +19,7 @@ Skymap is a standalone database that offers:
 * https://www.synapse.org/skymap (take < 3 minutes to set up the account). 
 
 
+Part of this work was presented on ISMB: https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf
 # Examples: simple code to analyze big data
 
 
@@ -64,12 +65,15 @@ If you happen to want to dig into the gut and gore make a copy of the pipeline, 
 
 
 ### Download, parse and merge SRA META DATA
-|Steps | Code| Input description|Input dir|Output description|Output dir| Timing|
-|---- | ----| ----|----|----|----| ----|
-|download SRA metadata | ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb|none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins|
-|parse SRA metadata | ./SRA_META/SRAManager.py |  SRA files in XML formats|/nrnb/users/btsui/tmp/SRA_META/| list of pandas series containing list of (SRS,attribute, freetext) | /cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/| 20 mins
-|merge SRA metadata | ./SRA_META/SRAmerge.py | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| 
 
+|Steps | Code| Input description|Input dir|Output description|Output dir| Timing| Python version|
+|---- | ----| ----|----|----|----| ----|
+|download SRA metadata | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb |none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins| Python 3 |
+|parse SRA metadata | ./SRA_META/SRAManager.py |  SRA files in XML formats|/nrnb/users/btsui/tmp/SRA_META/| list of pandas series containing list of (SRS,attribute, freetext) | /cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/| 20 mins| Python 2| 
+|merge SRA metadata | ./SRA_META/SRAmerge.py | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|
+
+
+old directory: /cellar/users/btsui/Project/METAMAP/code/metamap/
 
 ### To update the SNP pipeline: 
 
@@ -82,7 +86,8 @@ For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run 
 |SNP extraction | ./Pipelines/snp/calculate_unprocessed.py|
 |calculating reads coverage | ./Pipelines/chip/calculate_unprocessed.py|
 |RNAseq quantification| ./Pipelines/RNAseq/calculate_unprocessed.py |
-|merge SNP alignment statistics | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Analysis/merge_variant_aligning_statistics.ipynb
+|merge SNP alignment statistics | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Analysis/merge_variant_aligning_statistics.ipynb |
+| merge SNP data | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/XGS_WGS/ParseAndMergeBamReadCount.ipynb |
 
  
  Details of benchmarking against TCGA are located at: 
@@ -140,17 +145,19 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 ```
 
     [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 11053 bytes to README.md
-    [master ce3d59a] updated: README
-     1 file changed, 0 insertions(+), 0 deletions(-)
-     create mode 100644 ISMB_poster_Skymap.pdf
+    [NbConvertApp] Writing 8826 bytes to README.md
+    [master f29590d] updated: README
+     1 file changed, 30 insertions(+), 81 deletions(-)
+    Counting objects: 17, done.
+    Delta compression using up to 32 threads.
+    Compressing objects: 100% (17/17), done.
+    Writing objects: 100% (17/17), 151.47 KiB | 0 bytes/s, done.
+    Total 17 (delta 8), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (8/8), completed with 2 local objects.[K
+    remote: This repository moved. Please use the new location:[K
+    remote:   git@github.com:brianyiktaktsui/Skymap.git[K
     To git@github.com:brianyiktaktsui/AllPipes.git
-     ! [rejected]        master -> master (non-fast-forward)
-    error: failed to push some refs to 'git@github.com:brianyiktaktsui/AllPipes.git'
-    hint: Updates were rejected because the tip of your current branch is behind
-    hint: its remote counterpart. Integrate the remote changes (e.g.
-    hint: 'git pull ...') before pushing again.
-    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+       c9c1567..f29590d  master -> master
 
 
 
