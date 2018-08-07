@@ -5,7 +5,7 @@
 # In short
 
 
-Skymap is a standalone database that offers: 
+Skymap is a standalone database aim that offers: 
 1. **a single data matrix** for each omic layer for each species that spans >200k sequencing runs from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much published data are deposited in SRA: 
 ![alt text](./Figures/sra_data_availability.png "Logo Title Text 1")**And here is how much data we have processed from SRA:**
 ![alt text](./Figures/sra_data_processed.png)
@@ -48,6 +48,19 @@ https://github.com/brianyiktaktsui/Skymap/tree/master/code
 Skymap is still in Beta V0.0. [Please feel free to leave comments](https://www.synapse.org/#!Synapse:syn11415602/discussion/default) and suggestions!!! We would love to hear feedbacks from you.
 
 
+
+
+
+```python
+#!cp ../../notebook/
+```
+
+
+```python
+!ls ./clean_notebooks/TemporalQuery_V4_all_clean.ipynb
+```
+
+    ls: cannot access './clean_notebooks/TemporalQuery_V4_all_clean.ipynb': No such file or directory
 
 
 ## Methods (Manuscripts)
@@ -104,7 +117,7 @@ Please considering citing if you are using Skymap. (doi:10.7303/syn11415602)
 (https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf)
 
 
-Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov,Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
+Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
 The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
 Grant money that make this work possible: NIH DP5OD017937,GM103504
 
@@ -121,60 +134,4 @@ The storage is in python pandas pickle format. Therefore, the only packges you n
 
 I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
 
-
-
-
-```python
-!git pull
-```
-
-    remote: Counting objects: 3, done.[K
-    remote: Compressing objects: 100% (3/3), done.[K
-    remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0[K
-    Unpacking objects: 100% (3/3), done.
-    From github.com:brianyiktaktsui/AllPipes
-       c39cddd..c9c1567  master     -> origin/master
-    [20A[m[1;71H[7mModified[22;16H[m              [7m[ Can now UnJustify! ][m[K[24;45Hjustify   [7m^_[m Go To Lineaster' of github.com:brianyiktaktsui/AllPipes[22;16H[7m[ line 1/8 (12%), col 1/61 (1%), char 0/288 (0%) ]
-
-
-```python
-!jupyter nbconvert --to markdown README.ipynb
-!git add README.md ./Figures/sra_data_processed.png #./jupyter-notebooks/clean_notebooks/*
-!git commit -m "updated: README"
-!git push 
-```
-
-    [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Writing 8826 bytes to README.md
-    [master f29590d] updated: README
-     1 file changed, 30 insertions(+), 81 deletions(-)
-    Counting objects: 17, done.
-    Delta compression using up to 32 threads.
-    Compressing objects: 100% (17/17), done.
-    Writing objects: 100% (17/17), 151.47 KiB | 0 bytes/s, done.
-    Total 17 (delta 8), reused 0 (delta 0)
-    remote: Resolving deltas: 100% (8/8), completed with 2 local objects.[K
-    remote: This repository moved. Please use the new location:[K
-    remote:   git@github.com:brianyiktaktsui/Skymap.git[K
-    To git@github.com:brianyiktaktsui/AllPipes.git
-       c9c1567..f29590d  master -> master
-
-
-
-```python
-!git config --global push.default simple
-
-```
-
-
-```python
-#!ls ./Figures/sra_data_processed.png
-```
-
-
-```python
-!pwd
-```
-
-    /cellar/users/btsui/Project/METAMAP/notebook/RapMapTest
 
