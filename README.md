@@ -11,7 +11,7 @@ Skymap is a standalone database aim that offers:
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
 3. **a techinical metadata file** that describe the relationships between the sequencing runs. 
 
-The files can all the interpolated like this: 
+For examples, all the variant data can all the interpolated like this: 
 ![alt text](./Figures/Skymap_SNP_description.png
 )
 
