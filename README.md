@@ -107,10 +107,7 @@ However, due to the fact where patients allele informations are protected, we ar
 ## Acknowledgement
 
 
-Please considering citing if you are using Skymap. (doi:10.7303/syn11415602)
-
-(https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf)
-
+Please considering citing if you are using Skymap. (https://www.biorxiv.org/content/early/2018/08/07/386441)
 
 Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
 The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
