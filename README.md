@@ -1,5 +1,5 @@
 
-**Feel free to contact me (I will try to reply within 3 days)**@: btsui@eng.ucsd.edu  
+**Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
 
 # Summary
