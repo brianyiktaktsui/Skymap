@@ -30,8 +30,14 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 3. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
 
-
 [Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
+
+
+
+
+**Diagnosis:** if sage synapse download fails,   download the corresponding python pandas pickle using the web instead interface (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
+
+
 
 
 ### References
