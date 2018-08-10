@@ -20,15 +20,15 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 # Quick start (<10min): 
-1. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
-2. Choose one of the following notebooks to run.
-
+1. **python 3** (won't work for python 2 at the moment), https://www.anaconda.com/download/
+2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
+3. Choose one of the following notebooks to run.
 
 * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
 
-3. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
+4. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
 
 [Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
 
@@ -177,7 +177,7 @@ Please considering citing if you are using Skymap. (https://www.biorxiv.org/cont
 Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
 The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
 
-There are also many people who help tested Skymap: Ben Kellman, Rachel Marty. 
+There are also many people who help tested Skymap: Ben Kellman, Rachel Marty, Daniel Carlin. 
 
 Grant money that make this work possible: NIH DP5OD017937,GM103504
 
