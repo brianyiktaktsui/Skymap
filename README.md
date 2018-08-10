@@ -58,7 +58,7 @@ Skymap is still in Beta V0.0. [Please feel free to leave comments](https://www.s
 | ---: | ---: |
 |Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://docs.google.com/presentation/d/1KcumgtLfCdHNnIwkbU5DaQ7UNKHGbJ_fJZFy1cj53yE/
 |Meta-analysis using NLP (Metamap) and reprocessed RNAseq data| https://docs.google.com/presentation/d/14vLJJQ6ziw-2aLDoQAJGyv1sYo5ENzljsqsbZr9jNLM| 
-### Manuscripts
+### Manuscripts related to this project
 | Title | URL to manuscript | github|  
 | ---: | ---: | ---: | 
 | Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
