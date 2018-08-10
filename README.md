@@ -35,7 +35,7 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 
-**Diagnosis:** if sage synapse download fails,   download the corresponding python pandas pickle using the web instead interface (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
+**Diagnosis:** if sage synapse download fails, download the corresponding python pandas pickle using the web interface instead (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
 
 
 
@@ -176,8 +176,10 @@ Please considering citing if you are using Skymap. (https://www.biorxiv.org/cont
 
 Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
 The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
-Grant money that make this work possible: NIH DP5OD017937,GM103504
 
+There are also many people who help tested Skymap: Ben Kellman, Rachel Marty. 
+
+Grant money that make this work possible: NIH DP5OD017937,GM103504
 
 Term of use: Use Skymap however you want. Just dont sue me, I have no money. 
 
