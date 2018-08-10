@@ -32,7 +32,7 @@ clean_notebooks/ExampleDataLoading/loadVariantData.ipynb
 
 | Title | data URL | jupyter-notebook loading examples |
 | ---: | ----: | ----: |
-| Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | [click me](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantData.ipynb) |
+| Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | [click me](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) |
 | Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | |
 
 
