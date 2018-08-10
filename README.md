@@ -1,20 +1,6 @@
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
-# Quick start (<10min): 
-1. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
-2. Choose one of the following notebooks to run.
-
-
-* **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
-* **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
-
-
-3. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
-
-
-[Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
-
 # Summary
 
 Skymap is a standalone database aim that offers: 
@@ -30,6 +16,22 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 **Where they can all fit into your personal computer.**
 
+
+
+
+# Quick start (<10min): 
+1. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
+2. Choose one of the following notebooks to run.
+
+
+* **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
+* **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
+
+
+3. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
+
+
+[Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
 
 
 ### References
