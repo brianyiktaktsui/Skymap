@@ -1,9 +1,11 @@
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
-# Quick start: [Click me to download and run example notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip)
-Choose an example jupyter notebook click "Run All" . The notebook will download the example data, install the depedencies and run the example. 
-Here are the example notebooks: 
+# Quick start (<10min): 
+1. [Click me to download the following examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
+2. Choose one notebook to run. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the example. 
+
+
 1. **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 2. **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
