@@ -2,7 +2,7 @@
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
 # Quick start: [Click me to download and run example notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip)
-Click "Run All" in an example jupyter notebook. The notebook will download the example data, install the depedencies and run the example.
+Choose an example jupyter notebook ( loadingRNAseqByGene.ipynb and loadVariantDataBySRRID.ipynb ) click "Run All" . The notebook will download the example data, install the depedencies and run the example.
 
 [Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
 
