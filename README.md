@@ -2,7 +2,10 @@
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
 # Quick start: [Click me to download and run example notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip)
-Choose an example jupyter notebook ( loadingRNAseqByGene.ipynb and loadVariantDataBySRRID.ipynb ) click "Run All" . The notebook will download the example data, install the depedencies and run the example.
+Choose an example jupyter notebook click "Run All" . The notebook will download the example data, install the depedencies and run the example. 
+Here are the example notebooks: 
+1. **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
+2. **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
 [Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
 
@@ -22,6 +25,12 @@ For examples, all the variant data and the data columns be interpolated like thi
 **Where they can all fit into your personal computer.**
 
 
+
+### References
+**ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
+**Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
+
+**Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
 
 
 # Data directory and loading examples
@@ -70,7 +79,7 @@ And you can easily overlay gene expression level on top of it. As an example, Tp
 ## Methods 
 ### Slides 
 **Google docs and slides with links pointing to jupyter-notebook**:
-The numbers from the jupyternobook will be different from the manuscript as there are more data incoperated everyday. The hope is that it can help you understand how I got each number and figures from the manuscript. 
+The numbers from the jupyternobook will be different from the manuscript as there are more data being incoperated everyday. The hope is that it can help you understand each number and figures from the manuscript. 
 
 |Title| Mansucript URL | Figures URL | 
 | ---: | ---: |---: |
@@ -93,8 +102,6 @@ The numbers from the jupyternobook will be different from the manuscript as ther
 
 
 
-The numbers from the jupyternobook will be different from the manuscript as there are more data incoperated everyday. The hope is that it can help you understand how I got each number and figures from the manuscript. 
-
 | Title | google docs  | google slides |
 | ---: | --: | --: | 
 | Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive | https://docs.google.com/document/d/1BGGQOpWczOwan9STqs-J9zpa8A-aj4aJ1RND_qKzRFs | https://docs.google.com/presentation/d/1dERUDHh2ab8UdPaHa-ki-8RMae6yi2eYJQM4b7ArVog |
@@ -110,7 +117,7 @@ The numbers from the jupyternobook will be different from the manuscript as ther
 
 #  Pipeline
 
-If you happen to want to dig into the gut and gore make a copy of the pipeline, the code are documented as the followings
+If you happen to want to dig into the gut and gore, and make a copy of the pipeline, here are the scripts:
 
 
 
