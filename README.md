@@ -21,13 +21,23 @@ For examples, all the variant data be interpolated like this:
 * https://www.synapse.org/skymap (take < 3 minutes to set up the account). 
 
 Part of this work was presented on ISMB 2018: https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf
+
+
+### Data directory
+
+| Title | link | data layout |
+| ---: | ----: | ----: |
+| Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | clean_notebooks/ExampleDataLoading/loadVariantData.ipynb |
+| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | |
+
 # Examples: simple code to analyze big data
 
-## Locating  variant and correlating with RNAseq and metadata
+## 1. Locating  variant and correlating with RNAseq and metadata
 This is probably the best example that give you an idea on how to go from data slicing in Skymap to basic data analysis. 
+
 [jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/XGS_WGS/FindStudiesWithBrafV600Mutated.ipynb)
 
-## High resolution mouse developmental hierachy map
+## 2. High resolution mouse developmental hierachy map
 [jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb
 )
 
@@ -38,7 +48,7 @@ Each componenet represent a tissue. Each node represent a particular study at a 
 And you can easily overlay gene expression level on top of it. As an example, Tp53 expression is known to be tightly regulated in development. Let's look at the dynamic of Tp53 expression over time and spatial locations in the following plot.
 ![alt_text](./Figures/heirachy_Trp53.png "tp53")
 
-## Simple RNAseq data slicing and hypothesis testing
+## 3. Simple RNAseq data slicing and hypothesis testing
 [jupyer notebook link](https://github.com/brianyiktaktsui/Skymap_legacy/blob/master/DataSlicingExample.ipynb)
 
 
@@ -68,17 +78,17 @@ Skymap is still in Beta V0.0. [Please feel free to leave comments](https://www.s
 
 ** Google docs and slides with links pointing to jupyter-notebook **:
 
-The numbers from the jupyternobook will be different from the manuscript as there are more data incoperated everyday. The hope is that it can help you understand how I got each number from the manuscript. 
+The numbers from the jupyternobook will be different from the manuscript as there are more data incoperated everyday. The hope is that it can help you understand how I got each number and figures from the manuscript. 
 
-| | |
-| ---: | --: |
+| Title | google docs  | google slides |
+| ---: | --: | --: | 
 | Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive | https://docs.google.com/document/d/1BGGQOpWczOwan9STqs-J9zpa8A-aj4aJ1RND_qKzRFs | https://docs.google.com/presentation/d/1dERUDHh2ab8UdPaHa-ki-8RMae6yi2eYJQM4b7ArVog |
 
 
 
-** Unpublished but ongoing manuscripts**
+**Unpublished but ongoing manuscripts**
 
-| | |
+| Title | google doc |
 | ---: | --: |
 | Meta-analysis using NLP (Metamap) and reprocessed RNAseq data | https://docs.google.com/document/d/1_nES7vroX7lCwf5NSNBVZ1k2iubYm5wLeFqusq5aZuk |  |
 | Deep biomedical named entity recognition NLP engine | https://docs.google.com/document/d/1sbm9L8-OCVZ_qoPqwZyedE5uL4I9k0Hg7znZn6El_l0 | https://github.com/brianyiktaktsui/DEEP_NLP |
