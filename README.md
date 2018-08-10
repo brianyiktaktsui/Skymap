@@ -3,8 +3,8 @@
 
 # Summary
 
-Skymap is a standalone database aim that offers: 
-1. **a single data matrix** for each omic layer for each species that spans >200k sequencing runs from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much data we have reprocessed from the  SRA: 
+Skymap is a standalone database that aim to offers: 
+1. **a single data matrix** for each omic layer for each species that spans **>200k sequencing runs** from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much data we have reprocessed from the SRA: 
 ![alt text](./Figures/sra_data_processed.png)
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
 3. **a techinical metadata file** that describe the relationships between the sequencing runs. 
@@ -52,6 +52,8 @@ I tried to keep the loading to be as simple as possible. The jupyter-notebooks e
 | ---: | ----: | ----: |
 | Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) |
 | Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)|
+| Metadata| https://www.synapse.org/#!Synapse:syn11416037 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)|
+
 
 
 
