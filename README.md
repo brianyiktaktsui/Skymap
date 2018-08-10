@@ -23,21 +23,23 @@ For examples, all the variant data be interpolated like this:
 Part of this work was presented on ISMB 2018: https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf
 
 
-### Data directory
+# Data directory
 
-| Title | link | data layout |
+I tried to keep the loading to be as simple as possible. The jupyter-notebooks are <10 lines in general with external depedency with python pandas only. 
+
+| Title | data URL | jupyter-notebook loading examples |
 | ---: | ----: | ----: |
 | Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | clean_notebooks/ExampleDataLoading/loadVariantData.ipynb |
 | Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | |
 
 # Examples: simple code to analyze big data
 
-## 1. Locating  variant and correlating with RNAseq and metadata
+### 1. Locating  variant and correlating with RNAseq and metadata
 This is probably the best example that give you an idea on how to go from data slicing in Skymap to basic data analysis. 
 
 [jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/XGS_WGS/FindStudiesWithBrafV600Mutated.ipynb)
 
-## 2. High resolution mouse developmental hierachy map
+### 2. High resolution mouse developmental hierachy map
 [jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb
 )
 
@@ -48,26 +50,21 @@ Each componenet represent a tissue. Each node represent a particular study at a 
 And you can easily overlay gene expression level on top of it. As an example, Tp53 expression is known to be tightly regulated in development. Let's look at the dynamic of Tp53 expression over time and spatial locations in the following plot.
 ![alt_text](./Figures/heirachy_Trp53.png "tp53")
 
-## 3. Simple RNAseq data slicing and hypothesis testing
+### 3. Simple RNAseq data slicing and hypothesis testing
 [jupyer notebook link](https://github.com/brianyiktaktsui/Skymap_legacy/blob/master/DataSlicingExample.ipynb)
 
-
-
-### The code for the pipelines is here:
-https://github.com/brianyiktaktsui/Skymap/tree/master/code
-
-Skymap is still in Beta V0.0. [Please feel free to leave comments](https://www.synapse.org/#!Synapse:syn11415602/discussion/default) and suggestions!!! We would love to hear feedbacks from you.
 
 
 
 
 ## Methods 
-### Slides
+### Slides 
 
 |Title| Mansucript URL | 
 | ---: | ---: |
 |Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://docs.google.com/presentation/d/1KcumgtLfCdHNnIwkbU5DaQ7UNKHGbJ_fJZFy1cj53yE/
 |Meta-analysis using NLP (Metamap) and reprocessed RNAseq data| https://docs.google.com/presentation/d/14vLJJQ6ziw-2aLDoQAJGyv1sYo5ENzljsqsbZr9jNLM| 
+
 ### Manuscripts related to this project
 | Title | URL to manuscript | github|  
 | ---: | ---: | ---: | 
