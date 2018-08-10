@@ -20,15 +20,18 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 # Quick start (<10min): 
-1. **python 3** (won't work for python 2 at the moment), https://www.anaconda.com/download/
+1. [install python 3]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
 2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
 3. Choose one of the following notebooks to run.
+ * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 
-* **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
-* **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
+ * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
 
 4. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
+
+
+
 
 [Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
 
