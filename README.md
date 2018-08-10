@@ -1,9 +1,12 @@
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
+# Quick start: [Click me to download and run example notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip)
+Click "Run All" in an example jupyter notebook. The notebook will download the example data, install the depedencies and run the example.
+
+[Check here for more info on executing jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
 
 # Summary
-
 
 Skymap is a standalone database aim that offers: 
 1. **a single data matrix** for each omic layer for each species that spans >200k sequencing runs from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much data we have reprocessed from the  SRA: 
@@ -11,36 +14,35 @@ Skymap is a standalone database aim that offers:
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
 3. **a techinical metadata file** that describe the relationships between the sequencing runs. 
 
-For examples, all the variant data be interpolated like this: 
+### Solution: three tables to related > 100k experiments
+For examples, all the variant data and the data columns be interpolated like this: 
 ![alt text](./Figures/Skymap_SNP_description.png
 )
 
 **Where they can all fit into your personal computer.**
 
-**If you intend to run the examples, please first download the data from here:** 
-* https://www.synapse.org/skymap (take < 3 minutes to set up the account). 
-
-Part of this work was presented on ISMB 2018: https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf
 
 
-# Data directory
 
-I tried to keep the loading to be as simple as possible. The jupyter-notebooks are <10 lines in general with external depedency with python pandas only. 
-
-clean_notebooks/ExampleDataLoading/loadVariantData.ipynb
+# Data directory and loading examples
 
 
-| Title | data URL | jupyter-notebook loading examples |
+
+I tried to keep the loading to be as simple as possible. The jupyter-notebooks each have <10 lines of python codes in general with external depedency with package pandas only. The memory requirement are all less than 5G. 
+
+
+| Title | data URL | jupyter-notebook loading examples | 
 | ---: | ----: | ----: |
-| Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | [click me](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) |
-| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | |
+| Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) |
+| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)|
 
 
-```python
-https://github.com/brianyiktaktsui/Skymap/tree/master/jupyter-notebooks/clean_notebooks/ExampleDataLoading/loadVariantData.ipynb
-```
 
-# Examples: simple code to analyze big data
+
+
+# Example analysis
+
+Simple code to analyze big data
 
 ### 1. Locating  variant and correlating with RNAseq and metadata
 This is probably the best example that give you an idea on how to go from data slicing in Skymap to basic data analysis. 
