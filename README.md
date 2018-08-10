@@ -27,10 +27,18 @@ Part of this work was presented on ISMB 2018: https://github.com/brianyiktaktsui
 
 I tried to keep the loading to be as simple as possible. The jupyter-notebooks are <10 lines in general with external depedency with python pandas only. 
 
+clean_notebooks/ExampleDataLoading/loadVariantData.ipynb
+
+
 | Title | data URL | jupyter-notebook loading examples |
 | ---: | ----: | ----: |
-| Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | clean_notebooks/ExampleDataLoading/loadVariantData.ipynb |
+| Allelic read counts | https://www.synapse.org/#!Synapse:syn15624400 | [click me](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantData.ipynb) |
 | Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | |
+
+
+```python
+https://github.com/brianyiktaktsui/Skymap/tree/master/jupyter-notebooks/clean_notebooks/ExampleDataLoading/loadVariantData.ipynb
+```
 
 # Examples: simple code to analyze big data
 
@@ -59,13 +67,22 @@ And you can easily overlay gene expression level on top of it. As an example, Tp
 
 ## Methods 
 ### Slides 
+**Google docs and slides with links pointing to jupyter-notebook**:
+The numbers from the jupyternobook will be different from the manuscript as there are more data incoperated everyday. The hope is that it can help you understand how I got each number and figures from the manuscript. 
 
-|Title| Mansucript URL | 
-| ---: | ---: |
-|Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://docs.google.com/presentation/d/1KcumgtLfCdHNnIwkbU5DaQ7UNKHGbJ_fJZFy1cj53yE/
+|Title| Mansucript URL | Figures URL | 
+| ---: | ---: |---: |
+|Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://docs.google.com/document/d/1BGGQOpWczOwan9STqs-J9zpa8A-aj4aJ1RND_qKzRFs |https://docs.google.com/presentation/d/1dERUDHh2ab8UdPaHa-ki-8RMae6yi2eYJQM4b7ArVog |
 |Meta-analysis using NLP (Metamap) and reprocessed RNAseq data| https://docs.google.com/presentation/d/14vLJJQ6ziw-2aLDoQAJGyv1sYo5ENzljsqsbZr9jNLM| 
 
-### Manuscripts related to this project
+
+
+
+| Title | google docs  | google slides |
+| ---: | --: | --: | 
+| Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive | https://docs.google.com/document/d/1BGGQOpWczOwan9STqs-J9zpa8A-aj4aJ1RND_qKzRFs | https://docs.google.com/presentation/d/1dERUDHh2ab8UdPaHa-ki-8RMae6yi2eYJQM4b7ArVog |
+
+### Manuscripts in biorxiv related to this project
 | Title | URL to manuscript | github|  
 | ---: | ---: | ---: | 
 | Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
@@ -73,7 +90,6 @@ And you can easily overlay gene expression level on top of it. As an example, Tp
 
 
 
-** Google docs and slides with links pointing to jupyter-notebook **:
 
 The numbers from the jupyternobook will be different from the manuscript as there are more data incoperated everyday. The hope is that it can help you understand how I got each number and figures from the manuscript. 
 
