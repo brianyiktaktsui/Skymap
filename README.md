@@ -20,9 +20,9 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 # Quick start (<10min): 
-1. [install python 3]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
+1. [install python with version >=3.4]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
 2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
-3. Choose one of the following notebooks to run.
+3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html) .
  * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 
  * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
@@ -40,6 +40,7 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 **Diagnosis:** if sage synapse download fails, download the corresponding python pandas pickle using the web interface instead (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
 
+My python is v3.6.5 and pandas is v0.23.4. 
 
 
 
