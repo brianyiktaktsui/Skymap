@@ -3,11 +3,10 @@ import sys
 import os
 import time
 
-i=1412
-
-#i=int(sys.argv[1])-1
+#i=1412
+i=int(sys.argv[1])-1
 #
-manifest_dir='/cellar/users/btsui/Project/METAMAP/notebook/RapMapTest/XGS_WGS/./tcga_lgg_wgs_bams.df.wxs_rnaseq.pickle'
+manifest_dir='/cellar/users/btsui/Project/METAMAP/notebook/RapMapTest/XGS_WGS/./tcga_lgg_wgs_bams.df.wxs.pickle'
 token_dir='/cellar/users/ramarty/tokens/gdc-user-token.2018-07-30T16_10_04.794Z.txt'
 bam_read_count_dir='/cellar/users/btsui/Program/bam_read_count/bam-readcount-master/bin/bam-readcount'
 
@@ -30,9 +29,11 @@ os.chdir(tmpDir)
 
 os.system('rm fastq_pipe')
 
+#TEST=True:
+#if TEST: 
+#    os.system('bamToFastq -i {} -fq  /dev/stdout | head -n 1000 > fastq_pipe'.format(manifest_S['file_name']))
+#else:
 os.system('mkfifo fastq_pipe')
-os.system('view -s 0.25 -b {} > test.sam'.format(manifest_S['file_name']))
-
 os.system('bamToFastq -i {} -fq fastq_pipe &'.format(manifest_S['file_name']))
 
 ### align using bowtie2
@@ -45,7 +46,7 @@ os.system('bamToFastq -i {} -fq fastq_pipe &'.format(manifest_S['file_name']))
 baseGenomesDir='/cellar/users/btsui/Data/BOWTIE_GENOME_SNP_INDEX/'
 specie='Homo_sapiens'
 genomeDir=baseGenomesDir+'/'+specie+'/bowtie2'
-cmd_algn='bowtie2 --local -x {ref} -U fastq_pipe --no-unal --threads 16 | samtools view -bS - -o unalgn.bam '.format(ref=genomeDir)
+cmd_algn='bowtie2 --local -x {ref} -U fastq_pipe --no-unal --threads 8 | samtools view -bS - -o unalgn.bam '.format(ref=genomeDir)
 
 #align
 t0 = time.time()
@@ -58,10 +59,18 @@ print ('time for alignment:'+str(total))
 t0 = time.time()
 #samtools sort -T /tmp/aln.sorted -o aln.sorted.bam aln.bam
 
-
+"""
+java -jar picard.jar MarkDuplicates \
+      I=input.bam \
+      O=marked_duplicates.bam \
+      M=marked_dup_metrics.txt
+"""
 #os.system('samtools sort unalgn.bam -o sorted.bam')
 os.system('samtools sort -T ./ -o sorted.with_dup.bam unalgn.bam')
-os.system('samtools rmdup sorted.with_dup.bam sorted.bam')
+picardJarDir='/cellar/users/btsui/Program/picard/picard.jar'
+picardCmd="java -Xmx10000m -jar {} MarkDuplicates I=sorted.with_dup.bam O=sorted.bam M=marked_dup_metrics.txt REMOVE_DUPLICATES=true ASSUME_SORTED=true".format(picardJarDir)
+os.system(picardCmd)
+#os.system('samtools rmdup -s sorted.with_dup.bam sorted.bam')
 #os.system('samtoolls sorted.bam')
 os.system('samtools index sorted.bam')
 
