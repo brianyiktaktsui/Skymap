@@ -3,13 +3,11 @@ Table of Contents
 =================
 
   * [Summary](#summary)
-      * [Solution: three tables to related &gt; 100k experiments](#solution-three-tables-to-related--100k-experiments)
-  * [Quick start (&lt;10min):](#quick-start-10min)
-  * [References](#references)
+  * [Quick start (&lt;10min)](#quick-start-10min)
   * [Data directory and loading examples](#data-directory-and-loading-examples)
-      * [Genomic data](#genomic-data)
+      * [-omic data](#-omic-data)
       * [Metadata](#metadata)
-  * [Example analysis](#example-analysis)
+  * [Example analysis using reprocessed data](#example-analysis-using-reprocessed-data)
       * [1. Locating  variant and correlating with RNAseq and metadata](#1-locating--variant-and-correlating-with-rnaseq-and-metadata)
       * [2. High resolution mouse developmental hierachy map](#2-high-resolution-mouse-developmental-hierachy-map)
       * [3. Simple RNAseq data slicing and hypothesis testing](#3-simple-rnaseq-data-slicing-and-hypothesis-testing)
@@ -18,9 +16,10 @@ Table of Contents
       * [Manuscripts in biorxiv related to this project](#manuscripts-in-biorxiv-related-to-this-project)
     * [Pipeline](#pipeline)
       * [Download, parse and merge SRA META DATA](#download-parse-and-merge-sra-meta-data)
-      * [To update the SNP pipeline:](#to-update-the-snp-pipeline)
+      * [Update the SNP pipeline](#update-the-snp-pipeline)
     * [Acknowledgement](#acknowledgement)
     * [Data format and coding style](#data-format-and-coding-style)
+  * [References](#references)
 
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
@@ -33,8 +32,8 @@ Skymap is a standalone database that aim to offers:
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
 3. **a techinical metadata file** that describe the relationships between the sequencing runs. 
 
-### Solution: three tables to related > 100k experiments
-For examples, all the variant data and the data columns be interpolated like this: 
+**Solution: three tables to related > 100k experiments**: 
+For examples, all the variant data and the data columns can be interpolated like this: 
 ![alt text](./Figures/Skymap_SNP_description.png
 )
 
@@ -43,7 +42,7 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 
-# Quick start (<10min): 
+# Quick start (<10min)
 
 
 
@@ -73,12 +72,6 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 
-# References
-**ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
-**Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
-
-**Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
-
 
 # Data directory and loading examples
 
@@ -86,7 +79,7 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 I tried to keep the loading to be as simple as possible. The jupyter-notebooks each have <10 lines of python codes in general with external depedency with package pandas only. The memory requirement are all less than 5G. 
 
-### Genomic data
+### -omic data
 | Title | data URL | jupyter-notebook loading examples | format | 
 | ---: | ----: | ----: | ----:|
 | Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe|
@@ -105,7 +98,7 @@ All the metadtata files are located at sage synapse folder: https://www.synapse.
 
 
 
-# Example analysis
+# Example analysis using reprocessed data
 
 Simple code to analyze big data
 
@@ -188,7 +181,7 @@ If you happen to want to dig into the gut and gore, and make a copy of the pipel
 
 Repalce my directory (/cellar/users/btsui/Project/METAMAP/code/metamap/)with your directory if you wanna run it. 
 
-### To update the SNP pipeline: 
+### Update the SNP pipeline
 
 The way I organized the code is trying to keep the code as simple as possible. 
 For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run each pipeliine starting with calcuate_uprocessed.py, which calculate the number of files still require for processing.
@@ -234,3 +227,9 @@ The storage is in python pandas pickle format. Therefore, the only packges you n
 I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
 
 
+
+# References
+**ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
+**Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
+
+**Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
