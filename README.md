@@ -26,11 +26,11 @@ Table of Contents
 
 # Summary
 
-Skymap is a standalone database that aim to offers: 
+Skymap is a standalone database that aims to offer: 
 1. **a single data matrix** for each omic layer for each species that spans **>200k sequencing runs** from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much data we have reprocessed from the SRA: 
 ![alt text](./Figures/sra_data_processed.png)
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
-3. **a techinical metadata file** that describe the relationships between the sequencing runs. 
+3. **a technical metadata file** that describes the relationships between the sequencing runs. 
 
 **Solution: three tables to related > 100k experiments**: 
 For examples, all the variant data and the data columns can be interpolated like this: 
@@ -80,10 +80,12 @@ For examples, all the variant data and the data columns can be interpolated like
 I tried to keep the loading to be as simple as possible. The jupyter-notebook each have <10 lines of python codes and package dependency on python pandas only. The memory requirement are all less than 5G. 
 
 ### -omic data
-| Title | Data URL | Jupyter-notebook loading examples | Format | 
-| ---: | ----: | ----: | ----:|
-| Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe|
-| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)| numpy array|
+| Title | Data URL | Jupyter-notebook loading examples | Format | Uses|
+| ---: | ----: | ----: | ----:| ---: |
+| Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe| Variant, CNV detection|
+| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)| numpy array|Expression level quantification| 
+| Read coverage | - | [availability depending upon demand](http://seqanswers.com/forums/showthread.php?t=83975)| - |  ChIP Peak detection|
+|Microbe quantification| - | [availability depending upon demand](http://seqanswers.com/forums/showthread.php?t=83975) | - | Microbiome community detection |
 
 ### Metadata
 
