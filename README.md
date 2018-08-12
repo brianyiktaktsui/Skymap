@@ -3,8 +3,8 @@ Table of Contents
 =================
 
   * [Summary](#summary)
-  * [Quick start (&lt;10min)](#quick-start-10min)
-  * [Data directory and loading examples](#data-directory-and-loading-examples)
+  * [Quick start (&lt;10 mins)](#quick-start-10-mins)
+  * [Data directory and data loading examples](#data-directory-and-data-loading-examples)
       * [-omic data](#-omic-data)
       * [Metadata](#metadata)
   * [Example jupyter notebook analysis using reprocessed data](#example-jupyter-notebook-analysis-using-reprocessed-data)
@@ -13,13 +13,13 @@ Table of Contents
       * [3. Simple RNAseq data slicing and hypothesis testing](#3-simple-rnaseq-data-slicing-and-hypothesis-testing)
   * [Methods](#methods)
       * [Slides](#slides)
-      * [Manuscripts in biorxiv related to this project](#manuscripts-in-biorxiv-related-to-this-project)
     * [Pipeline](#pipeline)
       * [Download, parse and merge SRA META DATA](#download-parse-and-merge-sra-meta-data)
       * [Update the SNP pipeline](#update-the-snp-pipeline)
     * [Acknowledgement](#acknowledgement)
     * [Data format and coding style](#data-format-and-coding-style)
   * [References](#references)
+      * [Manuscripts in biorxiv related to this project](#manuscripts-in-biorxiv-related-to-this-project)
 
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
@@ -42,13 +42,13 @@ For examples, all the variant data and the data columns can be interpolated like
 
 
 
-# Quick start (<10min)
+# Quick start (<10 mins)
 
 
 
 1. [install python with version >=3.4]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
 2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
-3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html) .
+3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new conda environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html) .
    * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 
    * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
@@ -73,14 +73,14 @@ For examples, all the variant data and the data columns can be interpolated like
 
 
 
-# Data directory and loading examples
+# Data directory and data loading examples
 
 
 
-I tried to keep the loading to be as simple as possible. The jupyter-notebooks each have <10 lines of python codes in general with external depedency with package pandas only. The memory requirement are all less than 5G. 
+I tried to keep the loading to be as simple as possible. The jupyter-notebook each have <10 lines of python codes and package dependency on python pandas only. The memory requirement are all less than 5G. 
 
 ### -omic data
-| Title | data URL | jupyter-notebook loading examples | format | 
+| Title | Data URL | Jupyter-notebook loading examples | Format | 
 | ---: | ----: | ----: | ----:|
 | Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe|
 | Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)| numpy array|
@@ -89,18 +89,16 @@ I tried to keep the loading to be as simple as possible. The jupyter-notebooks e
 
 All the metadtata files are located at sage synapse folder: https://www.synapse.org/#!Synapse:syn15661258
 
-| Title | File name | jupyter-notebook loading examples | format | 
+| Title | File name | Jupyter-notebook loading examples | Format | 
 | ---: | ----: | ----: | ----:|
 | biospecieman annotations| allSRS.pickle.gz | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)| python pandas pickle dataframe|
 | experimental annotations | allSRX.pickle.gz | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
-|biospeiciman experimental and sequencing runs mapping. sequencing and QC stats| sra_dump.fastqc.bowtie_algn.pickle | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
+|biospeiciman experimental and sequencing runs mappings. sequencing and QC stats| sra_dump.fastqc.bowtie_algn.pickle | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
 
 
 
 
 # Example jupyter notebook analysis using reprocessed data
-
-Simple code to analyze big data
 
 ### 1. Locating  variant and correlating with RNAseq and metadata
 This is probably the best example that give you an idea on how to go from data slicing in Skymap to basic data analysis. 
@@ -127,8 +125,8 @@ And you can easily overlay gene expression level on top of it. As an example, Tp
 
 # Methods 
 ### Slides 
-**Google docs and slides with links pointing to jupyter-notebook**:
-The numbers from the jupyternobook will be different from the manuscript as there are more data being incoperated everyday. The hope is that it can help you understand each number and figures from the manuscript. 
+**Google docs and slides with links pointing to jupyter-notebooks**:
+The numbers from the jupyter notebooks will be different from the manuscript as there are more data being incoperated everyday. The hope is that it can help you understand each number and figures from the manuscript. 
 
 |Title| Mansucript URL | Figures URL | 
 | ---: | ---: |---: |
@@ -142,18 +140,7 @@ The numbers from the jupyternobook will be different from the manuscript as ther
 | ---: | --: | --: | 
 | Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive | https://docs.google.com/document/d/1BGGQOpWczOwan9STqs-J9zpa8A-aj4aJ1RND_qKzRFs | https://docs.google.com/presentation/d/1dERUDHh2ab8UdPaHa-ki-8RMae6yi2eYJQM4b7ArVog |
 
-### Manuscripts in biorxiv related to this project
-| Title | URL to manuscript | github|  
-| ---: | ---: | ---: | 
-| Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
 
-
-
-
-
-| Title | google docs  | google slides |
-| ---: | --: | --: | 
-| Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive | https://docs.google.com/document/d/1BGGQOpWczOwan9STqs-J9zpa8A-aj4aJ1RND_qKzRFs | https://docs.google.com/presentation/d/1dERUDHh2ab8UdPaHa-ki-8RMae6yi2eYJQM4b7ArVog |
 
 
 
@@ -234,3 +221,9 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 **Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
 
 **Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
+
+### Manuscripts in biorxiv related to this project
+| Title | URL to manuscript | github|  
+| ---: | ---: | ---: | 
+| Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
+
