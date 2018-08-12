@@ -49,9 +49,9 @@ For examples, all the variant data and the data columns can be interpolated like
 1. [install python with version >=3.4]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
 2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
 3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html) .
- * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
+   * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 
- * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
+   * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
 
 4. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
@@ -66,7 +66,7 @@ For examples, all the variant data and the data columns can be interpolated like
 
 **Diagnosis:** 
 
-* My python is v3.6.5,  pandas is v0.23.4, synapse client is v1.8.1. 
+* If you run into errors from packages, try the versions I used: python v3.6.5,  pandas v0.23.4, synapse client v1.8.1. 
 * If sage synapse download fails, download the corresponding python pandas pickle using the web interface instead (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
 
 
@@ -230,6 +230,7 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 
 # References
 **ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
+
 **Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
 
 **Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
