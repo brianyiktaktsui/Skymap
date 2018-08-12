@@ -20,6 +20,9 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 # Quick start (<10min): 
+
+
+
 1. [install python with version >=3.4]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
 2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
 3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html) .
@@ -38,9 +41,11 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 
-**Diagnosis:** if sage synapse download fails, download the corresponding python pandas pickle using the web interface instead (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
+**Diagnosis:** 
 
-My python is v3.6.5 and pandas is v0.23.4. 
+* My python is v3.6.5,  pandas is v0.23.4, synapse client is v1.8.1. 
+* If sage synapse download fails, download the corresponding python pandas pickle using the web interface instead (https://www.synapse.org/#!Synapse:syn11415602/files/) and read in the pickle using pandas.read_pickle.
+
 
 
 
@@ -57,14 +62,21 @@ My python is v3.6.5 and pandas is v0.23.4.
 
 I tried to keep the loading to be as simple as possible. The jupyter-notebooks each have <10 lines of python codes in general with external depedency with package pandas only. The memory requirement are all less than 5G. 
 
+### Genomic data
+| Title | data URL | jupyter-notebook loading examples | format | 
+| ---: | ----: | ----: | ----:|
+| Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe|
+| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)| numpy array|
 
-| Title | data URL | jupyter-notebook loading examples | 
-| ---: | ----: | ----: |
-| Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) |
-| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)|
-| Metadata| https://www.synapse.org/#!Synapse:syn11416037 | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)|
+### Metadata
 
+All the metadtata files are located at sage synapse folder: https://www.synapse.org/#!Synapse:syn15661258
 
+| Title | File name | jupyter-notebook loading examples | format | 
+| ---: | ----: | ----: | ----:|
+| biospecieman annotations| allSRS.pickle.gz | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)| python pandas pickle dataframe|
+| experimental annotations | allSRX.pickle.gz | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
+|biospeiciman experimental and sequencing runs mapping. sequencing and QC stats| sra_dump.fastqc.bowtie_algn.pickle | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
 
 
 
