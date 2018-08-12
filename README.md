@@ -39,7 +39,7 @@ For examples, all the variant data and the data columns can be interpolated like
 
 **Where they can all fit into your personal computer.**
 
-
+[Click here to check out the quick start page and start playing around with the data](https://github.com/brianyiktaktsui/Skymap/blob/master/README.md#quick-start-10-mins)
 
 
 # Quick start (<10 mins)
