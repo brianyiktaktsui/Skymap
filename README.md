@@ -7,7 +7,7 @@ Table of Contents
   * [Data directory and loading examples](#data-directory-and-loading-examples)
       * [-omic data](#-omic-data)
       * [Metadata](#metadata)
-  * [Example analysis using reprocessed data](#example-analysis-using-reprocessed-data)
+  * [Example jupyter notebook analysis using reprocessed data](#example-jupyter-notebook-analysis-using-reprocessed-data)
       * [1. Locating  variant and correlating with RNAseq and metadata](#1-locating--variant-and-correlating-with-rnaseq-and-metadata)
       * [2. High resolution mouse developmental hierachy map](#2-high-resolution-mouse-developmental-hierachy-map)
       * [3. Simple RNAseq data slicing and hypothesis testing](#3-simple-rnaseq-data-slicing-and-hypothesis-testing)
@@ -98,7 +98,7 @@ All the metadtata files are located at sage synapse folder: https://www.synapse.
 
 
 
-# Example analysis using reprocessed data
+# Example jupyter notebook analysis using reprocessed data
 
 Simple code to analyze big data
 
