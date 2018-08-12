@@ -5,7 +5,7 @@ Table of Contents
   * [Summary](#summary)
       * [Solution: three tables to related &gt; 100k experiments](#solution-three-tables-to-related--100k-experiments)
   * [Quick start (&lt;10min):](#quick-start-10min)
-      * [References](#references)
+  * [References](#references)
   * [Data directory and loading examples](#data-directory-and-loading-examples)
       * [Genomic data](#genomic-data)
       * [Metadata](#metadata)
@@ -13,10 +13,10 @@ Table of Contents
       * [1. Locating  variant and correlating with RNAseq and metadata](#1-locating--variant-and-correlating-with-rnaseq-and-metadata)
       * [2. High resolution mouse developmental hierachy map](#2-high-resolution-mouse-developmental-hierachy-map)
       * [3. Simple RNAseq data slicing and hypothesis testing](#3-simple-rnaseq-data-slicing-and-hypothesis-testing)
-    * [Methods](#methods)
+  * [Methods](#methods)
       * [Slides](#slides)
       * [Manuscripts in biorxiv related to this project](#manuscripts-in-biorxiv-related-to-this-project)
-  * [Pipeline](#pipeline)
+    * [Pipeline](#pipeline)
       * [Download, parse and merge SRA META DATA](#download-parse-and-merge-sra-meta-data)
       * [To update the SNP pipeline:](#to-update-the-snp-pipeline)
     * [Acknowledgement](#acknowledgement)
@@ -73,7 +73,7 @@ For examples, all the variant data and the data columns be interpolated like thi
 
 
 
-### References
+# References
 **ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
 **Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
 
@@ -132,7 +132,7 @@ And you can easily overlay gene expression level on top of it. As an example, Tp
 
 
 
-## Methods 
+# Methods 
 ### Slides 
 **Google docs and slides with links pointing to jupyter-notebook**:
 The numbers from the jupyternobook will be different from the manuscript as there are more data being incoperated everyday. The hope is that it can help you understand each number and figures from the manuscript. 
@@ -171,7 +171,7 @@ The numbers from the jupyternobook will be different from the manuscript as ther
 | Meta-analysis using NLP (Metamap) and reprocessed RNAseq data | https://docs.google.com/document/d/1_nES7vroX7lCwf5NSNBVZ1k2iubYm5wLeFqusq5aZuk |  |
 | Deep biomedical named entity recognition NLP engine | https://docs.google.com/document/d/1sbm9L8-OCVZ_qoPqwZyedE5uL4I9k0Hg7znZn6El_l0 | https://github.com/brianyiktaktsui/DEEP_NLP |
 
-#  Pipeline
+##  Pipeline
 
 If you happen to want to dig into the gut and gore, and make a copy of the pipeline, here are the scripts:
 
