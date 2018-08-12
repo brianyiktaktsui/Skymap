@@ -22,7 +22,6 @@ Table of Contents
     * [Acknowledgement](#acknowledgement)
     * [Data format and coding style](#data-format-and-coding-style)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
