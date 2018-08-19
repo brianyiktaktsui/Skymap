@@ -7,6 +7,7 @@ Table of Contents
   * [Data directory and data loading examples](#data-directory-and-data-loading-examples)
       * [-omic data](#-omic-data)
       * [Metadata](#metadata)
+      * [Axulilary](#axulilary)
   * [Example jupyter notebook analysis using reprocessed data](#example-jupyter-notebook-analysis-using-reprocessed-data)
       * [1. Locating  variant and correlating with RNAseq and metadata](#1-locating--variant-and-correlating-with-rnaseq-and-metadata)
       * [2. High resolution mouse developmental hierachy map](#2-high-resolution-mouse-developmental-hierachy-map)
@@ -87,6 +88,7 @@ I tried to keep the loading to be as simple as possible. The jupyter-notebook ea
 | Read coverage | - | [availability depending upon demand](http://seqanswers.com/forums/showthread.php?t=83975)| - |  ChIP Peak detection|
 |Microbe quantification| - | [availability depending upon demand](http://seqanswers.com/forums/showthread.php?t=83975) | - | Microbiome community detection |
 
+
 ### Metadata
 
 All the metadtata files are located at sage synapse folder: https://www.synapse.org/#!Synapse:syn15661258
@@ -97,8 +99,10 @@ All the metadtata files are located at sage synapse folder: https://www.synapse.
 | experimental annotations | allSRX.pickle.gz | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
 |biospeiciman experimental and sequencing runs mappings. sequencing and QC stats| sra_dump.fastqc.bowtie_algn.pickle | [click me to view](https://github.com/brianyiktaktsui/Skymap/blob/master/clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb) | python pandas pickle dataframe|
 
-
-
+### Axulilary
+|Title| File name | 
+| ---: | ----: | 
+| Distribution of data processed over time | [checkProgress.ipynb](https://github.com/brianyiktaktsui/Skymap/blob/master/Pipelines/RNAseq/checkProgress.ipynb) | 
 
 # Example jupyter notebook analysis using reprocessed data
 
