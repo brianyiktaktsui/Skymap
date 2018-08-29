@@ -49,17 +49,18 @@ For examples, all the variant data and the data columns can be interpolated like
 
 
 
-1. [install anaconda with python version >=3.4]( https://www.anaconda.com/download/) (**won't work with python 2**)
-copy paste and run this line in unix terminal
+1. [install miniconda/anaconda with python version >=3.4]( https://conda.io/miniconda.html) (**won't work with python 2**)
+
+2. Copy and paste to run this following line in unix terminal
     * `conda create --yes -n skymap jupyter python=3.6 pandas=0.23.4 && source activate skymap && jupyter-notebook`
 
-2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
-3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new conda environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html).
+3. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
+4. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new conda environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html).
    * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
    * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
 
-4. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
+5. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
 
 
 
