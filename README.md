@@ -15,8 +15,10 @@ Table of Contents
   * [Methods](#methods)
       * [Slides](#slides)
     * [Pipeline](#pipeline)
-      * [Download, parse and merge SRA META DATA](#download-parse-and-merge-sra-meta-data)
-      * [Update the SNP pipeline](#update-the-snp-pipeline)
+      * [Metadata: Download, parse and merge SRA META DATA](#metadata-download-parse-and-merge-sra-meta-data)
+      * [Allelic read counts](#allelic-read-counts)
+      * [Transcript counting](#transcript-counting)
+      * [Metadata layout axuliary](#metadata-layout-axuliary)
     * [Acknowledgement](#acknowledgement)
     * [Data format and coding style](#data-format-and-coding-style)
   * [References](#references)
@@ -48,13 +50,17 @@ For examples, all the variant data and the data columns can be interpolated like
 
 
 1. [install python with version >=3.4]( https://www.anaconda.com/download/) (won't work for python 2 at the moment)
+    * `conda create --yes -n skymap python=3.6 pandas=0.23.4 `
+    * `source activate skymap`
+    * `jupyter-notebook`
+
 2. [Click me to download the examples notebooks](https://github.com/brianyiktaktsui/Skymap/raw/master/ExampleDataLoading.zip) 
 3. Choose one of the following notebooks to run. **The code will automatically update your python pandas**, [create a new conda environment if necessary](https://conda.io/docs/user-guide/tasks/manage-environments.html) .
    * **loadVariantDataBySRRID.ipynb**: requires 1GB of disk space and 5GB of RAM. 
 
    * **loadingRNAseqByGene.ipynb**: requires  20GB of disk space and 1GB RAM. 
 
-
+3. 
 4. Click "Run All" to execute all the cells. The notebook will download the example data, install the depedencies and run the data query example. 
 
 
@@ -103,6 +109,7 @@ All the metadtata files are located at sage synapse folder: https://www.synapse.
 |Title| File name | 
 | ---: | ----: | 
 | Distribution of data processed over time | [checkProgress.ipynb](https://github.com/brianyiktaktsui/Skymap/blob/master/Pipelines/RNAseq/checkProgress.ipynb) | 
+|Generate RNAseq references| [generateReferences.ipynb](./RNAseq/generateReferences.ipynb)|
 
 # Example jupyter notebook analysis using reprocessed data
 
@@ -159,41 +166,60 @@ The numbers from the jupyter notebooks will be different from the manuscript as 
 
 ##  Pipeline
 
+The way I organized the code is trying to keep the code as simple as possible. 
+For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run each pipeliine starting with calcuate_uprocessed.py, which calculate the number of files still require for processing.
+
 If you happen to want to dig into the gut and gore, and make a copy of the pipeline, here are the scripts:
 
 
 
-### Download, parse and merge SRA META DATA
+
+### Metadata: Download, parse and merge SRA META DATA
 
 |Steps | Code| Input description|Input dir|Output description|Output dir| Timing| Python version|
 |----:| ----:| ----:|----:|----:|----:| ----:|----:|
-|download SRAmetadata|http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb |none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins| Python 3 |
-|parse SRA metadata | ./SRA_META/SRAManager.py |  SRA files in XML formats|/nrnb/users/btsui/tmp/SRA_META/| list of pandas series containing list of (SRS,attribute, freetext) | /cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/| 20 mins| Python 2| 
-|merge SRA metadata | ./SRA_META/SRAmerge.py | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|
-
+|download SRAmetadata|[pull_SRA_meta](./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb) |none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins| Python 3 |
+|parse SRA metadata | [parse SRS and SRX metadata](./SRA_META/SRAManager.py) |  SRA files in XML formats|/nrnb/users/btsui/tmp/SRA_META/| list of pandas series containing list of (SRS,attribute, freetext) | /cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/| 20 mins| Python 2| 
+|merge SRA metadata | [merege SRS and SRX parsed](./SRA_META/SRAmerge.py)| | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|
+|annotate SRA meta data based on SRX parsed | [annotate SRA data](./Pipelines/Update_SRA_meta_data/annotate_SRA_meta_data.ipynb) |
 
 Repalce my directory (/cellar/users/btsui/Project/METAMAP/code/metamap/)with your directory if you wanna run it. 
 
-### Update the SNP pipeline
 
-The way I organized the code is trying to keep the code as simple as possible. 
-For each pipeline, it has 6 scripts, <500 lines each to ensure readability. Run each pipeliine starting with calcuate_uprocessed.py, which calculate the number of files still require for processing.
-
-
-|Pipeline | Code| Input description|Input dir|Output description|Output dir| Timing|
-|---- | ----| ----|----|----|----| ----|
+### Allelic read counts
+|Pipeline | Code| 
+|---- | ----|
 |SNP extraction | ./Pipelines/snp/calculate_unprocessed.py|
 |calculating reads coverage | ./Pipelines/chip/calculate_unprocessed.py|
-|RNAseq quantification| ./Pipelines/RNAseq/calculate_unprocessed.py |
-|merge SNP alignment statistics | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Analysis/merge_variant_aligning_statistics.ipynb |
-| merge SNP data | http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/XGS_WGS/ParseAndMergeBamReadCount.ipynb |
+|merge SNP alignment statistics | [merge_variant_aligning_statistics](./Analysis/merge_variant_aligning_statistics.ipynb) |
+| merge SNP data | [merge SNP data into pandas pickles](./XGS_WGS/ParseAndMergeBamReadCount.ipynb) |
 
- 
- Details of benchmarking against TCGA are located at: 
+
+Details of benchmarking against TCGA are located at: 
 
 http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/XGS_WGS/README_TCGA_benchmark.ipynb
 
 However, due to the fact where patients allele informations are protected, we are not providing the allellic read counts for TCGA. 
+
+
+
+
+### Transcript counting
+
+|Pipeline | Code| 
+|---- | ----|
+|RNAseq quantification| ./Pipelines/RNAseq/calculate_unprocessed.py |
+|merge RNAseq data| [merge RNAseq data into transcripts](./Pipelines/RNAseq/merge/mergeKallistoOutputIntoTranscript.ipynb)|
+|reduce to gene symbol level| [reduce transcripts count to gene count using sum](./Pipelines/RNAseq/merge/reduceToGeneLevel.ipynb)|
+|merge into single file| [merge data into single numpy mmap matrix](./Pipelines/RNAseq/merge/mergeGeneMatrix.ipynb)
+| | [upload expression data to synapse](./Pipelines/RNAseq/merge/upload.ipynb)|
+|file count | [file count](./Pipelines/RNAseq/merge/fileCount.ipynb)
+
+### Metadata layout axuliary
+|Column | meaning|
+|: ---: | :---|
+| new_ScientificName | the string which the pipeline will use for matching with the reference genome as the species
+| ScientificName | original scientific name extracted from NCBI SRS| 
 
 ## Acknowledgement
 
