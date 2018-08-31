@@ -1,10 +1,10 @@
-
+Transcript count and allelic read counts of 400,000 public sequencing reads
 Table of Contents
 =================
 
   * [Summary](#summary)
   * [Quick start (&lt;10 mins)](#quick-start-10-mins)
-  * [Data directory and data loading examples](#data-directory-and-data-loading-examples)
+  * [Data directory and loading examples](#data-directory-and-loading-examples)
       * [-omic data](#-omic-data)
       * [Metadata](#metadata)
       * [Axulilary](#axulilary)
@@ -79,7 +79,7 @@ For examples, all the variant data and the data columns can be interpolated like
 
 
 
-# Data directory and data loading examples
+# Data directory and loading examples
 
 
 
