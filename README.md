@@ -31,7 +31,7 @@ Table of Contents
 # Summary
 
 Skymap is a standalone database that aims to offer: 
-1. **a single data matrix** for each omic layer for each species that spans **>200k sequencing runs** from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much data we have reprocessed from the SRA: 
+1. **a single data matrix** for each omic layer for each species that spans a total of **>400k sequencing runs** from all the public studies, which is done by reprocessing **petabytes** worth of sequencing data. Here is how much data we have reprocessed from the SRA: 
 ![alt text](./Figures/sra_data_processed.png)
 2. **a biological metadata file** that describe the relationships between the sequencing runs and also the keywords extracted from over **3 million** freetext annotations using NLP. 
 3. **a technical metadata file** that describes the relationships between the sequencing runs. 
