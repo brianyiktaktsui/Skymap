@@ -1,4 +1,4 @@
-# Transcript and allelic read counts of > 400,000 public sequencing runs
+# Extracting transcript and allelic read counts for > 400,000 public sequencing runs
 
 Table of Contents
 =================
