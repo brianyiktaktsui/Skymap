@@ -1,6 +1,6 @@
 
 
-# [Click here for quick-start ( < 2 minute)](http://hannahcarterlab.org/public-jupyterhub/)
+# [Click here for quick-start ( < 2 minutes)](http://hannahcarterlab.org/public-jupyterhub/)
 
 
 Table of Contents
