@@ -6,7 +6,7 @@
 Table of Contents
 =================
 
-(Click to jump to section)
+(Links are clickable if u open this README in JupyterNotebook)
   * [Summary](#Summary)
   * [Data directory and loading examples](#Data-directory-and-loading-examples)
       * [-omic data](#-omic-data)
@@ -27,7 +27,7 @@ Table of Contents
     * [Data format and coding style](#Data-format-and-coding-style)
   * [References](#References)
       * [Manuscripts in biorxiv related to this project](#Manuscripts-in-biorxiv-related-to-this-project)
-
+  * [Status](#Status)
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
@@ -182,6 +182,8 @@ If you happen to want to dig into the gut and gore, and make a copy of the pipel
 
 ### SRA Metadata download parse and merge 
 
+**For Python 2 codes, source activate `environment_conda_py26_btsui.yml` before running **
+
 |Steps | Code| Input description|Input dir|Output description|Output dir| Timing| Python version|
 |----:| ----:| ----:|----:|----:|----:| ----:|----:|
 |download SRAmetadata|[pull_SRA_meta](./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb) |none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins| Python 3 |
@@ -189,6 +191,7 @@ If you happen to want to dig into the gut and gore, and make a copy of the pipel
 |merge SRA metadata | [merege SRS and SRX parsed](./SRA_META/SRAmerge.py)| | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|
 |annotate SRA meta data based on SRX parsed | [annotate SRA data](./Pipelines/Update_SRA_meta_data/annotate_SRA_meta_data.ipynb) |
 | |[upload meta data to AWS](Pipelines/Update_SRA_meta_data/upload_AWS.ipynb)|
+
 
 Repalce my directory (/cellar/users/btsui/Project/METAMAP/code/metamap/)with your directory if you wanna run it. 
 
@@ -265,4 +268,8 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
 | Title | URL to manuscript | github|  
 | ---: | ---: | ---: | 
 | Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
+
+
+# Status 
+[On going task](http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Pipelines/RNAseq/merge/mergeKallistoOutputIntoTranscript.ipynb)
 
