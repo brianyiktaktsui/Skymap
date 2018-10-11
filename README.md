@@ -7,8 +7,8 @@ Table of Contents
 =================
 
 (Click to jump to section)
-  * [Summary](#summary)
-  * [Data directory and loading examples](#data-directory-and-loading-examples)
+  * [Summary](#Summary)
+  * [Data directory and loading examples](#Data-directory-and-loading-examples)
       * [-omic data](#-omic-data)
       * [Metadata](#Metadata)
       * [Axulilary](#Axulilary)
@@ -234,15 +234,14 @@ However, due to the fact where patients allele informations are protected, we ar
 
 Please considering citing if you are using Skymap. (https://www.biorxiv.org/content/early/2018/08/07/386441)
 
-Acknowledgement: We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
+We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
 The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
 
-There are also many people who help tested Skymap: Ben Kellman, Rachel Marty, Daniel Carlin. 
+There are also many people who help tested Skymap: Ben Kellman, Rachel Marty, Daniel Carlin, Spiko van Dam. 
 
 Grant money that make this work possible: NIH DP5OD017937,GM103504
 
 Term of use: Use Skymap however you want. Just dont sue me, I have no money. 
-
 
 
 For why I named it Skymap, I forgot.
