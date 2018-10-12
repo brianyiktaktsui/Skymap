@@ -27,8 +27,7 @@ Table of Contents
     * [Data format and coding style](#Data-format-and-coding-style)
   * [References](#References)
       * [Manuscripts in biorxiv related to this project](#Manuscripts-in-biorxiv-related-to-this-project)
-  * [Status](#Status)
-  * [Timestamp for data](#Timestamp for data)
+
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
 
@@ -190,7 +189,9 @@ If you happen to want to make a copy of the pipeline:
 
 * For Python 3 codes, `source activate environment_conda_py36_btsui` before running 
 
-here are the scripts:
+Repalce my directory (/cellar/users/btsui/Project/METAMAP/code/metamap/)with your directory if you wanna run it. 
+
+Here are the scripts:
 
 
 
@@ -208,14 +209,55 @@ here are the scripts:
 | |[upload meta data to AWS](Pipelines/Update_SRA_meta_data/upload_AWS.ipynb)|
 
 
-Repalce my directory (/cellar/users/btsui/Project/METAMAP/code/metamap/)with your directory if you wanna run it. 
+
+
+Input directory
+
+
+```python
+!ls -lath /nrnb/users/btsui/tmp/ 
+```
+
+    total 15G
+    drwxr-xr-x 930873 btsui users          32M Jul 24 21:16 SRA_META
+    drwxr-xr-x      6 btsui users          512 Jan  4  2018 .
+    drwxr-xr-x      6 btsui CarterGeneral  512 Aug 10  2016 ..
+    -rw-r--r--      1 btsui users          15G Jul  4  2016 NCBI_SRA_Metadata_Full_20160702_Run_2.tar
+    drwxr-xr-x     11 btsui users         128K Oct  2  2015 METAMAP
+    drwxr-xr-x      3 btsui users          512 Aug 31  2015 TSCC
+    drwxr-xr-x      2 btsui users         128K Aug 12  2015 bioSample
+
+
+Output directory
+
+
+```python
+!ls -lath /data/cellardata/users/btsui/SRA/DUMP/
+```
+
+    total 4.3G
+    -rw-r--r--  1 btsui users  21M Oct  8 19:31 allSRS.with_processed_data.pickle.gz
+    drwxr-xr-x  3 btsui users   15 Oct  8 19:30 .
+    -rw-r--r--  1 btsui users 212M Aug 28 18:31 sra_dump.csv.gz
+    -rw-r--r--  1 btsui users 556M Jul 24 20:13 SRA_Run_Members.tab
+    -rw-r--r--  1 btsui users 1.9G Jul 24 20:13 NCBI_SRA_Metadata_Full_20180702.tar.gz
+    -rw-r--r--  1 btsui users 4.0G Jul 24 20:13 SRA_Accessions.tab
+    -rw-r--r--  1 btsui users 659M Jul 21 12:11 sra_dump.fastqc.bowtie_algn.pickle
+    -rw-r--r--  1 btsui users 139M Jul 19 18:52 merged_variant_aligning_statistics.tsv
+    -rw-r--r--  1 btsui users 372M May 16 08:08 sra_dump.pickle
+    drwxr-xr-x 13 btsui users   14 Mar  1  2018 ..
+    drwxr-xr-x  3 btsui users    3 Jan  5  2018 FULL_SRA_meta
+    -rw-r--r--  1 btsui users 133M Jan  5  2018 allSRX.pickle.gz
+    -rw-r--r--  1 btsui users 241M Jan  5  2018 allSRS.pickle.gz
+    -rw-r--r--  1 btsui users 175M Oct 30  2017 file_meta.txt
+    -rw-r--r--  1 btsui users 175M Oct 30  2017 meta.txt
+
 
 
 ### Allelic read counts
 |Pipeline | Code| 
 |---- | ----|
 |SNP extraction | ./Pipelines/snp/calculate_unprocessed.py|
-|calculating reads coverage | ./Pipelines/chip/calculate_unprocessed.py|
 |merge SNP alignment statistics | [merge_variant_aligning_statistics](./Analysis/merge_variant_aligning_statistics.ipynb) |
 | merge SNP data | [merge SNP data into pandas pickles](./Pipelines/snp/Merge/calculate_unprocessed.ipynb) |
 
@@ -231,75 +273,44 @@ However, due to the fact where patients allele informations are protected, we ar
 
 ### Transcript counting
 
-| Code| 
+| Pipeline Code| 
 |---- | 
 |./Pipelines/RNAseq/calculate_unprocessed.py |
 | [merge RNAseq data into transcripts](./Pipelines/RNAseq/merge/mergeKallistoOutputIntoTranscript.ipynb)|
-| [reduce transcripts count to gene count using sum](./Pipelines/RNAseq/merge/reduceToGeneLevel.ipynb)|
-|[merge data into single numpy mmap matrix](./Pipelines/RNAseq/merge/mergeGeneMatrix.ipynb)
-| [upload expression data to synapse](./Pipelines/RNAseq/merge/upload_AWS.ipynb)|
+| [reduce transcripts count to gene count using sum ](./Pipelines/RNAseq/merge/reduceToGeneLevel.ipynb)|
+|[merge data into single numpy mmap matrix ](./Pipelines/RNAseq/merge/mergeGeneMatrix.ipynb)
+| [upload expression data to AWS (On this step now)](./Pipelines/RNAseq/merge/upload_AWS.ipynb)|
+
+|Auxilary Code|
+|---- | 
 | [file count](./Pipelines/RNAseq/merge/fileCount.ipynb)|
 | [merge Kalististo mapping stats](./Pipelines/RNAseq/merge/mergeKalistoMappingStats.ipynb)|
 
-### Metadata layout axuliary
-|Column | meaning|
-|: ---: | :---|
-| new_ScientificName | the string which the pipeline will use for matching with the reference genome as the species
-| ScientificName | original scientific name extracted from NCBI SRS| 
-
-## Acknowledgement
-
-
-Please considering citing if you are using Skymap. (https://www.biorxiv.org/content/early/2018/08/07/386441)
-
-We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
-The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
-
-There are also many people who help tested Skymap: Ben Kellman, Rachel Marty, Daniel Carlin, Spiko van Dam. 
-
-Grant money that make this work possible: NIH DP5OD017937,GM103504
-
-Term of use: Use Skymap however you want. Just dont sue me, I have no money. 
-
-
-For why I named it Skymap, I forgot.
-
-## Data format and coding style
-
-The storage is in python pandas pickle format. Therefore, the only packges you need to load in the data is numpy and pandas, the backbone of data analysis in python. We keep the process of data loading as lean as possible. Less code means less bugs and less errors. For now, Skymap is geared towards ML/data science folks who are hungry for the vast amount of data and ain't afraid of coding. I will port the data to native HDF5 format to reduce platform dependency once I get a chance. 
-
-I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
-
-
-
-# References
-**ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
-
-**Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
-
-**Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
-
-### Manuscripts in biorxiv related to this project
-| Title | URL to manuscript | github|  
-| ---: | ---: | ---: | 
-| Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
-| Deep biomedical named entity recognition NLP engine | https://www.biorxiv.org/content/early/2018/09/12/414136 | https://github.com/brianyiktaktsui/DEEP_NLP |
-
-# Status 
-[check if mergeKallistoOutputIntoTranscript.ipynb complete running](http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/Pipelines/RNAseq/merge/mergeKallistoOutputIntoTranscript.ipynb)
-
-Status: it's runnning and outputing data now, it didn't run yesterday at all. 
-
-
-# Timestamp for data
-
-This should help keeping track of the data
-
-RNA-seq
+Intermediate files
 
 
 ```python
-!ls -lath /nrnb/users/btsui/Data/all_seq/rnaseq_merged/
+ls -lath /nrnb/users/btsui/Data/all_seq/rnaseq_merged_chunks/  | head
+```
+
+    total 566G
+    -rw-r--r--  1 btsui users   76M Oct 12 09:32 Mus_musculus.gene_symbol.tpm.SRR3.pickle
+    -rw-r--r--  1 btsui users   96M Oct 12 09:32 Mus_musculus.gene_symbol.tpm.ERR2.pickle
+    -rw-r--r--  1 btsui users   75M Oct 12 09:32 Homo_sapiens.gene_symbol.tpm.SRR27.pickle
+    -rw-r--r--  1 btsui users  9.4M Oct 12 09:32 Drosophila_melanogaster.gene_symbol.est_counts.ERR1.pickle
+    drwxr-xr-x  2 btsui users  128K Oct 12 09:32 [0m[01;34m.[0m/
+    -rw-r--r--  1 btsui users  263M Oct 12 09:32 Mus_musculus.gene_symbol.est_counts.SRR25.pickle
+    -rw-r--r--  1 btsui users  836M Oct 12 09:32 Homo_sapiens.gene_symbol.est_counts.SRR39.pickle
+    -rw-r--r--  1 btsui users   17M Oct 12 09:32 Drosophila_melanogaster.gene_symbol.est_counts.SRR36.pickle
+    -rw-r--r--  1 btsui users  253M Oct 12 09:32 Homo_sapiens.gene_symbol.est_counts.SRR5.pickle
+    ls: write error
+
+
+Output files
+
+
+```python
+!ls -lath /nrnb/users/btsui/Data/all_seq/rnaseq_merged/ 
 ```
 
     total 317G
@@ -349,32 +360,59 @@ RNA-seq
     -rw-r--r--  1 btsui users 2.2M Aug 28 18:55 Danio_rerio.transcript.est_counts.pickle
 
 
- Metadata
+### Coverage
+|Code|
+|---|
+| [calculating reads coverage](./Pipelines/chip/calculate_unprocessed.py)|
 
 
-```python
-!ls -lath /data/cellardata/users/btsui/SRA/DUMP/
-```
+### Metadata layout axuliary
+|Column | meaning|
+|: ---: | :---|
+| new_ScientificName | the string which the pipeline will use for matching with the reference genome as the species
+| ScientificName | original scientific name extracted from NCBI SRS| 
 
-    total 4.3G
-    -rw-r--r--  1 btsui users  21M Oct  8 19:31 allSRS.with_processed_data.pickle.gz
-    drwxr-xr-x  3 btsui users   15 Oct  8 19:30 .
-    -rw-r--r--  1 btsui users 212M Aug 28 18:31 sra_dump.csv.gz
-    -rw-r--r--  1 btsui users 556M Jul 24 20:13 SRA_Run_Members.tab
-    -rw-r--r--  1 btsui users 1.9G Jul 24 20:13 NCBI_SRA_Metadata_Full_20180702.tar.gz
-    -rw-r--r--  1 btsui users 4.0G Jul 24 20:13 SRA_Accessions.tab
-    -rw-r--r--  1 btsui users 659M Jul 21 12:11 sra_dump.fastqc.bowtie_algn.pickle
-    -rw-r--r--  1 btsui users 139M Jul 19 18:52 merged_variant_aligning_statistics.tsv
-    -rw-r--r--  1 btsui users 372M May 16 08:08 sra_dump.pickle
-    drwxr-xr-x 13 btsui users   14 Mar  1  2018 ..
-    drwxr-xr-x  3 btsui users    3 Jan  5  2018 FULL_SRA_meta
-    -rw-r--r--  1 btsui users 133M Jan  5  2018 allSRX.pickle.gz
-    -rw-r--r--  1 btsui users 241M Jan  5  2018 allSRS.pickle.gz
-    -rw-r--r--  1 btsui users 175M Oct 30  2017 file_meta.txt
-    -rw-r--r--  1 btsui users 175M Oct 30  2017 meta.txt
+## Acknowledgement
 
 
-Allelic read count
+Please considering citing if you are using Skymap. (https://www.biorxiv.org/content/early/2018/08/07/386441)
+
+We want to thank for the advice and resources from Dr. Hannah Carter (my PI), Dr. Jill Mesirov, Dr. Trey Ideker and Shamin Mollah. We also want to thank Dr. Ruben Arbagayen, Dr. Nate Lewis for their suggestion. 
+The method will soon be posted in bioarchive. Also, we want to thank the Sage Bio Network for hosting the data. We also thank to thank the NCBI for holding all the published raw reads at  [Sequnece Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
+
+There are also many people who help tested Skymap: Ben Kellman, Rachel Marty, Daniel Carlin, Spiko van Dam. 
+
+Grant money that make this work possible: NIH DP5OD017937,GM103504
+
+Term of use: Use Skymap however you want. Just dont sue me, I have no money. 
+
+
+For why I named it Skymap, I forgot.
+
+## Data format and coding style
+
+The storage is in python pandas pickle format. Therefore, the only packges you need to load in the data is numpy and pandas, the backbone of data analysis in python. We keep the process of data loading as lean as possible. Less code means less bugs and less errors. For now, Skymap is geared towards ML/data science folks who are hungry for the vast amount of data and ain't afraid of coding. I will port the data to native HDF5 format to reduce platform dependency once I get a chance. 
+
+I tried to keep the code and parameters to be lean and self-explanatory for your reference. 
+
+
+
+# References
+**ISMB 2018 poster:** https://github.com/brianyiktaktsui/Skymap/blob/master/ISMB_poster_Skymap.pdf	
+
+**Preprint on allelic read counts:** https://www.synapse.org/#!Synapse:syn11415602/files/
+
+**Data:** https://www.synapse.org/#!Synapse:syn11415602/files/
+
+### Manuscripts in biorxiv related to this project
+| Title | URL to manuscript | github|  
+| ---: | ---: | ---: | 
+| Extracting allelic read counts from 250,000 human sequencing runs in Sequence Read Archive| https://www.biorxiv.org/content/biorxiv/early/2018/08/07/386441.full.pdf | |
+| Deep biomedical named entity recognition NLP engine | https://www.biorxiv.org/content/early/2018/09/12/414136 | https://github.com/brianyiktaktsui/DEEP_NLP |
+
+
+
+
 
 
 ```python
