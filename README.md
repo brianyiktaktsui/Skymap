@@ -1,6 +1,6 @@
 
 
-# [Click here for quick-start to go from data slicing to figures in < 2 minutes](http://hannahcarterlab.org/public-jupyterhub/)
+# [Click here for quick-start to go from data slicing to publication figures in < 2 minutes](http://hannahcarterlab.org/public-jupyterhub/)
 
 
 Table of Contents
@@ -19,14 +19,14 @@ Table of Contents
   * [Methods](#Methods)
       * [Slides](#Slides)
   * [Pipeline](#Pipeline)
-      * [Metadata: Download, parse and merge SRA META DATA](#SRA-Metadata-download-parse-and-merge)
-      * [Allelic read counts](#Allelic-read-counts)
-      * [Transcript counting](#Transcript-counting)
-      * [Metadata layout axuliary](#Metadata-layout-axuliary)
-    * [Acknowledgement](#Acknowledgement)
-    * [Data format and coding style](#Data-format-and-coding-style)
+      * [Metadata: Download, parse and merge SRA META DATA](./Pipelines/Update_SRA_meta_data/RunAll.ipynb)
+      * [Allelic read counts](./Pipelines/snp/RunAll.ipynb)
+      * [Transcript counting](./Pipelines/RNAseq/RunAll.ipynb)
+      * [Microbe read counting](./Microbiome/RunAll.ipynb)
+  * [Acknowledgement](#Acknowledgement)
+  * [Data format and coding style](#Data-format-and-coding-style)
   * [References](#References)
-      * [Manuscripts in biorxiv related to this project](#Manuscripts-in-biorxiv-related-to-this-project)
+  * [Manuscripts in biorxiv related to this project](#Manuscripts-in-biorxiv-related-to-this-project)
 
 
 **Feel free to contact me @: btsui@eng.ucsd.edu (I will try to reply within 3 days)**
@@ -189,175 +189,13 @@ If you happen to want to make a copy of the pipeline:
 
 * For Python 3 codes, `source activate environment_conda_py36_btsui` before running 
 
+
 Repalce my directory (/cellar/users/btsui/Project/METAMAP/code/metamap/)with your directory if you wanna run it. 
+
+Internal: login to an nrnb-node to run the following notebooks. 
 
 Here are the scripts:
 
-
-
-
-### SRA Metadata download parse and merge 
-
-
-
-|Steps | Code| Input description|Input dir|Output description|Output dir| Timing| Python version|
-|----:| ----:| ----:|----:|----:|----:| ----:|----:|
-|download SRAmetadata|[pull_SRA_meta](./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb) |none, download from web||SRA meta data| /nrnb/users/btsui/tmp/SRA_META/| 30 mins| Python 3 |
-|parse SRA metadata using Metamap| [parse SRS and SRX metadata](./SRA_META/SRAManager.ipynb) |  SRA files in XML formats|/nrnb/users/btsui/tmp/SRA_META/| list of pandas series containing list of (SRS,attribute, freetext) | /cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/| 20 mins| Python 2| 
-|merge SRA metadata | [merge SRS and SRX parsed](./SRA_META/SRAmerge.ipynb)| | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|
-|annotate SRA meta data based on SRX parsed | [annotate SRA data](./Pipelines/Update_SRA_meta_data/annotate_SRA_meta_data.ipynb) |
-| |[upload meta data to AWS](Pipelines/Update_SRA_meta_data/upload_AWS.ipynb)|
-
-
-
-
-Input directory
-
-
-```python
-!ls -lath /nrnb/users/btsui/tmp/ 
-```
-
-    total 15G
-    drwxr-xr-x 930873 btsui users          32M Jul 24 21:16 SRA_META
-    drwxr-xr-x      6 btsui users          512 Jan  4  2018 .
-    drwxr-xr-x      6 btsui CarterGeneral  512 Aug 10  2016 ..
-    -rw-r--r--      1 btsui users          15G Jul  4  2016 NCBI_SRA_Metadata_Full_20160702_Run_2.tar
-    drwxr-xr-x     11 btsui users         128K Oct  2  2015 METAMAP
-    drwxr-xr-x      3 btsui users          512 Aug 31  2015 TSCC
-    drwxr-xr-x      2 btsui users         128K Aug 12  2015 bioSample
-
-
-Output directory
-
-
-```python
-!ls -lath /data/cellardata/users/btsui/SRA/DUMP/
-```
-
-    total 4.3G
-    -rw-r--r--  1 btsui users  21M Oct  8 19:31 allSRS.with_processed_data.pickle.gz
-    drwxr-xr-x  3 btsui users   15 Oct  8 19:30 .
-    -rw-r--r--  1 btsui users 212M Aug 28 18:31 sra_dump.csv.gz
-    -rw-r--r--  1 btsui users 556M Jul 24 20:13 SRA_Run_Members.tab
-    -rw-r--r--  1 btsui users 1.9G Jul 24 20:13 NCBI_SRA_Metadata_Full_20180702.tar.gz
-    -rw-r--r--  1 btsui users 4.0G Jul 24 20:13 SRA_Accessions.tab
-    -rw-r--r--  1 btsui users 659M Jul 21 12:11 sra_dump.fastqc.bowtie_algn.pickle
-    -rw-r--r--  1 btsui users 139M Jul 19 18:52 merged_variant_aligning_statistics.tsv
-    -rw-r--r--  1 btsui users 372M May 16 08:08 sra_dump.pickle
-    drwxr-xr-x 13 btsui users   14 Mar  1  2018 ..
-    drwxr-xr-x  3 btsui users    3 Jan  5  2018 FULL_SRA_meta
-    -rw-r--r--  1 btsui users 133M Jan  5  2018 allSRX.pickle.gz
-    -rw-r--r--  1 btsui users 241M Jan  5  2018 allSRS.pickle.gz
-    -rw-r--r--  1 btsui users 175M Oct 30  2017 file_meta.txt
-    -rw-r--r--  1 btsui users 175M Oct 30  2017 meta.txt
-
-
-
-### Allelic read counts
-|Pipeline | Code| 
-|---- | ----|
-|SNP extraction | ./Pipelines/snp/calculate_unprocessed.py|
-|merge SNP alignment statistics | [merge_variant_aligning_statistics](./Analysis/merge_variant_aligning_statistics.ipynb) |
-| merge SNP data | [merge SNP data into pandas pickles](./Pipelines/snp/Merge/calculate_unprocessed.ipynb) |
-
-
-Details of benchmarking against TCGA are located at: 
-
-http://localhost:6001/notebooks/Project/METAMAP/notebook/RapMapTest/XGS_WGS/README_TCGA_benchmark.ipynb
-
-However, due to the fact where patients allele informations are protected, we are not providing the allellic read counts for TCGA. 
-
-
-
-
-### Transcript counting
-
-| Pipeline Code| 
-|---- | 
-|./Pipelines/RNAseq/calculate_unprocessed.py |
-| [merge RNAseq data into transcripts](./Pipelines/RNAseq/merge/mergeKallistoOutputIntoTranscript.ipynb)|
-| [reduce transcripts count to gene count using sum ](./Pipelines/RNAseq/merge/reduceToGeneLevel.ipynb)|
-|[merge data into single numpy mmap matrix ](./Pipelines/RNAseq/merge/mergeGeneMatrix.ipynb)
-| [upload expression data to AWS (On this step now)](./Pipelines/RNAseq/merge/upload_AWS.ipynb)|
-
-|Auxilary Code|
-|---- | 
-| [file count](./Pipelines/RNAseq/merge/fileCount.ipynb)|
-| [merge Kalististo mapping stats](./Pipelines/RNAseq/merge/mergeKalistoMappingStats.ipynb)|
-
-Intermediate files
-
-
-```python
-ls -lath /nrnb/users/btsui/Data/all_seq/rnaseq_merged_chunks/  | head
-```
-
-    total 566G
-    -rw-r--r--  1 btsui users   76M Oct 12 09:32 Mus_musculus.gene_symbol.tpm.SRR3.pickle
-    -rw-r--r--  1 btsui users   96M Oct 12 09:32 Mus_musculus.gene_symbol.tpm.ERR2.pickle
-    -rw-r--r--  1 btsui users   75M Oct 12 09:32 Homo_sapiens.gene_symbol.tpm.SRR27.pickle
-    -rw-r--r--  1 btsui users  9.4M Oct 12 09:32 Drosophila_melanogaster.gene_symbol.est_counts.ERR1.pickle
-    drwxr-xr-x  2 btsui users  128K Oct 12 09:32 [0m[01;34m.[0m/
-    -rw-r--r--  1 btsui users  263M Oct 12 09:32 Mus_musculus.gene_symbol.est_counts.SRR25.pickle
-    -rw-r--r--  1 btsui users  836M Oct 12 09:32 Homo_sapiens.gene_symbol.est_counts.SRR39.pickle
-    -rw-r--r--  1 btsui users   17M Oct 12 09:32 Drosophila_melanogaster.gene_symbol.est_counts.SRR36.pickle
-    -rw-r--r--  1 btsui users  253M Oct 12 09:32 Homo_sapiens.gene_symbol.est_counts.SRR5.pickle
-    ls: write error
-
-
-Output files
-
-
-```python
-!ls -lath /nrnb/users/btsui/Data/all_seq/rnaseq_merged/ 
-```
-
-    total 317G
-    -rw-r--r--  1 btsui users 139M Oct  8 19:43 merged_kallisto_run_info.pickle
-    drwxr-xr-x  2 btsui users 128K Sep 13 08:32 .
-    -rw-r--r--  1 btsui users  25G Aug 29 12:25 Mus_musculus.transcript.tpm.npy
-    -rw-r--r--  1 btsui users 8.0G Aug 29 12:25 Mus_musculus.transcript.tpm.npy.gz
-    -rw-r--r--  1 btsui users 1.3M Aug 29 12:24 Mus_musculus.transcript.tpm.columns.txt
-    -rw-r--r--  1 btsui users 2.2M Aug 29 12:24 Mus_musculus.transcript.tpm.index.txt
-    -rw-r--r--  1 btsui users  46G Aug 29 12:21 Mus_musculus.transcript.est_counts.npy
-    -rw-r--r--  1 btsui users 9.5G Aug 29 12:21 Mus_musculus.transcript.est_counts.npy.gz
-    -rw-r--r--  1 btsui users 2.4M Aug 29 12:20 Mus_musculus.transcript.est_counts.columns.txt
-    -rw-r--r--  1 btsui users 2.2M Aug 29 12:20 Mus_musculus.transcript.est_counts.index.txt
-    -rw-r--r--  1 btsui users  62G Aug 29 12:14 Homo_sapiens.transcript.tpm.npy
-    -rw-r--r--  1 btsui users  21G Aug 29 12:14 Homo_sapiens.transcript.tpm.npy.gz
-    -rw-r--r--  1 btsui users 2.1M Aug 29 12:13 Homo_sapiens.transcript.tpm.columns.txt
-    -rw-r--r--  1 btsui users 2.7M Aug 29 12:13 Homo_sapiens.transcript.tpm.index.txt
-    -rw-r--r--  1 btsui users  13G Aug 29 12:09 Homo_sapiens.gene_symbol.tpm.npy
-    -rw-r--r--  1 btsui users 5.4G Aug 29 12:09 Homo_sapiens.gene_symbol.tpm.npy.gz
-    -rw-r--r--  1 btsui users 2.1M Aug 29 12:08 Homo_sapiens.gene_symbol.tpm.columns.txt
-    -rw-r--r--  1 btsui users 268K Aug 29 12:08 Homo_sapiens.gene_symbol.tpm.index.txt
-    -rw-r--r--  1 btsui users  62G Aug 29 12:05 Homo_sapiens.transcript.est_counts.npy
-    -rw-r--r--  1 btsui users  13G Aug 29 12:05 Homo_sapiens.transcript.est_counts.npy.gz
-    -rw-r--r--  1 btsui users 2.1M Aug 29 12:04 Homo_sapiens.transcript.est_counts.columns.txt
-    -rw-r--r--  1 btsui users 2.7M Aug 29 12:04 Homo_sapiens.transcript.est_counts.index.txt
-    -rw-r--r--  1 btsui users  50G Aug 29 11:52 Homo_sapiens.gene_symbol.est_counts.npy
-    -rw-r--r--  1 btsui users 5.4G Aug 29 11:52 Homo_sapiens.gene_symbol.est_counts.npy.gz
-    -rw-r--r--  1 btsui users 2.1M Aug 29 11:51 Homo_sapiens.gene_symbol.est_counts.columns.txt
-    -rw-r--r--  1 btsui users 268K Aug 29 11:51 Homo_sapiens.gene_symbol.est_counts.index.txt
-    drwxr-xr-x 18 btsui users 128K Aug 29 10:41 ..
-    -rw-r--r--  1 btsui users 502K Aug 28 20:25 Danio_rerio.gene_symbol.est_counts.npy
-    -rw-r--r--  1 btsui users   99 Aug 28 20:25 Danio_rerio.gene_symbol.est_counts.columns.txt
-    -rw-r--r--  1 btsui users 221K Aug 28 20:25 Danio_rerio.gene_symbol.est_counts.index.txt
-    -rw-r--r--  1 btsui users 252K Aug 28 20:25 Danio_rerio.gene_symbol.est_counts.npy.gz
-    -rw-r--r--  1 btsui users 762K Aug 28 20:24 Canis_familiaris.gene_symbol.tpm.npy
-    -rw-r--r--  1 btsui users  285 Aug 28 20:24 Canis_familiaris.gene_symbol.tpm.columns.txt
-    -rw-r--r--  1 btsui users  94K Aug 28 20:24 Canis_familiaris.gene_symbol.tpm.index.txt
-    -rw-r--r--  1 btsui users 129K Aug 28 20:24 Canis_familiaris.gene_symbol.tpm.npy.gz
-    -rw-r--r--  1 btsui users 3.0M Aug 28 20:24 Canis_familiaris.gene_symbol.est_counts.npy
-    -rw-r--r--  1 btsui users  285 Aug 28 20:24 Canis_familiaris.gene_symbol.est_counts.columns.txt
-    -rw-r--r--  1 btsui users  94K Aug 28 20:24 Canis_familiaris.gene_symbol.est_counts.index.txt
-    -rw-r--r--  1 btsui users 136K Aug 28 20:24 Canis_familiaris.gene_symbol.est_counts.npy.gz
-    -rw-r--r--  1 btsui users 1.9M Aug 28 19:59 Canis_familiaris.transcript.tpm.pickle
-    -rw-r--r--  1 btsui users 295K Aug 28 19:59 Canis_familiaris.transcript.tpm.pickle.gz
-    -rw-r--r--  1 btsui users 1.9M Aug 28 19:50 Canis_familiaris.transcript.est_counts.pickle
-    -rw-r--r--  1 btsui users 239K Aug 28 19:50 Canis_familiaris.transcript.est_counts.pickle.gz
-    -rw-r--r--  1 btsui users 2.2M Aug 28 18:55 Danio_rerio.transcript.est_counts.pickle
 
 
 ### Coverage
