@@ -16,8 +16,8 @@ def startChildren(cmd):
 specieToRefDict={'Homo_sapiens':'Homo_sapiens.GRCh38.dna_rm.toplevel.fa'}
 
 if TEST:
-    srrRun='ERR1569091'
-    specie='Homo_sapiens'
+    srrRun='SRR1558481'
+    specie='Mus_musculus'
 else:
     srrRun=sys.argv[1]
     specie=sys.argv[2]
@@ -37,7 +37,7 @@ myoption=r'"/cellar/users/btsui/.aspera/connect/bin/ascp|/cellar/users/btsui/.as
 trim_galore_Dir='/cellar/users/btsui/Program/TRIMAGLORE//trim_galore'
 bam_read_count_dir='/cellar/users/btsui/Program/bam_read_count/bam-readcount-master/bin/bam-readcount'
 snpBed='/cellar/users/btsui/Data/dbsnp/snp_beds/'+specie+'.bed'
-fa_dir='/cellar/users/btsui/Data/ensembl/release/fasta/'+specieToRefDict[specie]
+#fa_dir='/cellar/users/btsui/Data/ensembl/release/fasta/'+specieToRefDict[specie]
 
 base_sra_dir='/tmp/btsui/METH/sra/'
 
@@ -79,7 +79,7 @@ if TEST:#in test case, for min read length
 else:
     cmd_4="genomeCoverageBed -pc -ibam file_sorted -bg| awk '{ if ($4 >= 5) { print } }' >out.bg"
     
-cmd_0='samtools view -bS {srrRun}_count | samtools sort - > file_sorted'.format(srrRun=srrRun)
+#cmd_0='samtools view -bS {srrRun}_count | samtools sort - > file_sorted'.format(srrRun=srrRun)
 
 #bowtie that support interleave
 bowtie2_dir='/cellar/users/btsui/Program/bowtie2-2.3.4-linux-x86_64/bowtie2'
