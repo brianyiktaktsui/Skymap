@@ -13,7 +13,8 @@ def startChildren(cmd):
     p = Process(target=f)
     p.start()
     return p
-specieToRefDict={'Homo_sapiens':'Homo_sapiens.GRCh38.dna_rm.toplevel.fa'}
+#specieToRefDict={'Homo_sapiens':'Homo_sapiens.GRCh38.dna_rm.toplevel.fa',
+#                "Mus_musculus":'Mus_musculus.GRCm38.dna_rm.toplevel.fa'}
 
 if TEST:
     srrRun='ERR1569091'
@@ -37,7 +38,7 @@ myoption=r'"/cellar/users/btsui/.aspera/connect/bin/ascp|/cellar/users/btsui/.as
 trim_galore_Dir='/cellar/users/btsui/Program/TRIMAGLORE//trim_galore'
 bam_read_count_dir='/cellar/users/btsui/Program/bam_read_count/bam-readcount-master/bin/bam-readcount'
 snpBed='/cellar/users/btsui/Data/dbsnp/snp_beds/'+specie+'.bed'
-fa_dir='/cellar/users/btsui/Data/ensembl/release/fasta/'+specieToRefDict[specie]
+fa_dir='/cellar/users/btsui/Data/ensembl/snp_masked/'+specie+'.microbe.fa'
 
 base_sra_dir='/tmp/btsui/METH/sra/'
 

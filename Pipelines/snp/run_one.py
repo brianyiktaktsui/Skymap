@@ -9,7 +9,7 @@ os.chdir(CWD)
 
 unprocessed_meta_df=pd.read_csv(param.unprocessed_meta_dir)
 myS=unprocessed_meta_df.iloc[i]
-
+print ('LibraryLayout: ',myS['LibraryLayout'])
 if myS['LibraryLayout']=='SINGLE':
         cmd='python single_snp.py '+myS.Run+' '+myS['new_ScientificName']
         os.system(cmd)

@@ -1,5 +1,4 @@
 #run at 'Project/METAMAP/notebook/RapMapTest/Pipelines'
-
 import os,sys
 sys.path+=['/cellar/users/btsui/Project/METAMAP/notebook/RapMapTest/Pipelines/snp/']
 import pandas as pd
@@ -11,6 +10,7 @@ nThread=3
 
 #specieToRefDict={'Homo_sapiens':'Homo_sapiens.GRCh38.dna_rm.toplevel.fa'}
 def startChildren(cmd):
+
     def f():
         os.system(cmd) 
         #p.close()
@@ -19,9 +19,9 @@ def startChildren(cmd):
     return p
 
 if TEST:
-    srrRun='SRR2084809'
-    specie='Homo_sapiens'
-    downloadSpeed='2000000'
+    srrRun='SRR7651472'
+    specie='Mus_musculus'
+    downloadSpeed='20000000'
 else:
     srrRun=sys.argv[1]
     specie=sys.argv[2]
@@ -35,7 +35,7 @@ fa_dir='/cellar/users/btsui/Data/ensembl/snp_masked/'+specie+'.microbe.fa'
 
 log_out_dir=param.log_out_dir#'/cellar/users/btsui/Data/SRA/all_seq/log/'
 count_out_dir=param.count_out_dir#'/cellar/users/btsui/Data/SRA/all_seq/chip/'
-genomeDir=baseGenomesDir+specie+'/'
+genomeDir=baseGenomesDir+specie+'/'+'bowtie2'
 tmp_dir="/tmp/SRA_DATA/"
 
 count_script_dir='/cellar/users/btsui/Project/METAMAP/notebook/RapMapTest/Chip-seq/count'
@@ -104,10 +104,10 @@ os.system('cp snp.txt.gz {count_out_dir}/{srrRun}.txt.snp.gz'.format(
     count_out_dir=count_out_dir,srrRun=srrRun))
 os.system('cp per_fa_record_stat.txt.gz {count_out_dir}/{srrRun}_per_fa_record_stat.txt.gz'.format(
     count_out_dir=count_out_dir,srrRun=srrRun))##ADDED
-
-os.system('rm -r '+job_tmp_dir)
-os.system('rm '+base_sra_dir+srrRun+'.sra')
-os._exit(0)
+if not TEST:
+    os.system('rm -r '+job_tmp_dir)
+    os.system('rm '+base_sra_dir+srrRun+'.sra')
+    os._exit(0)
 
 """
 #old code
