@@ -1,6 +1,6 @@
 
 
-# [Click here for quick-start to go from data slicing to publication figures in < 2 minutes](http://hannahcarterlab.org/public-jupyterhub/)
+# [Click here for quick-start to go from data slicing to publication figures in < 2 minutes](http://jupyterhub.hannahcarterlab.org)
 
 
 Table of Contents
