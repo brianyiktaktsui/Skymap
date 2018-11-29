@@ -3,6 +3,19 @@
 # [Click here for quick-start to go from data slicing to publication figures in < 2 minutes](http://jupyterhub.hannahcarterlab.org)
 
 
+
+```python
+from IPython.display import HTML
+HTML('<img src="./Figures/QuickStart.gif">')
+```
+
+
+
+
+<img src="./Figures/QuickStart.gif">
+
+
+
 Table of Contents
 =================
 
