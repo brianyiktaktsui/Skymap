@@ -110,8 +110,8 @@ I tried to keep the loading to be as simple as possible. The jupyter-notebook ea
 ### -omic data
 | Title | Data URL | Jupyter-notebook loading examples | Format | Uses|
 | ---: | ----: | ----: | ----:| ---: |
-| Loading allelic read counts by SRR (SRA sequencing run) ID | https://www.synapse.org/#!Synapse:syn15624400 | [click me to view](./clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe| Variant, CNV detection|
-| Expression matrices| https://www.synapse.org/#!Synapse:syn11415787 | [click me to view](./clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)| numpy array|Expression level quantification| 
+| Loading allelic read counts by SRR (SRA sequencing run) ID | ftp://download.hannahcarterlab.org/all_seq/snp/mergedBySrr/| [click me to view](./clean_notebooks/ExampleDataLoading/loadVariantDataBySRRID.ipynb) | python pandas pickle dataframe| Variant, CNV detection|
+| Expression matrices| ftp://download.hannahcarterlab.org/all_seq/rnaseq_merged/ | [click me to view](./clean_notebooks/ExampleDataLoading/loadingRNAseqByGene.ipynb)| numpy array|Expression level quantification| 
 | Read coverage | - | [availability depending upon demand](http://seqanswers.com/forums/showthread.php?t=83975)| - |  ChIP Peak detection|
 |Microbe quantification| - | [availability depending upon demand](http://seqanswers.com/forums/showthread.php?t=83975) | - | Microbiome community detection |
 
