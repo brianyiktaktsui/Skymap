@@ -21,21 +21,23 @@ Table of Contents
 
 (Links are clickable if u open the README.ipynb in JupyterNotebook)
   * [Summary](#Summary)
+  * [Pipeline](#Pipeline)
+      * [Metadata: Download, parse and merge SRA META DATA](./Pipelines/Update_SRA_meta_data/RunAll.ipynb)
+      * [Allelic read counts](./Pipelines/snp/RunAll.ipynb)
+      * [Transcript counting](./Pipelines/RNAseq/RunAll.ipynb)
+      * [Microbe read counting](./Microbiome/RunAll.ipynb)
   * [Data directory and loading examples](#Data-directory-and-loading-examples)
       * [-omic data](#-omic-data)
       * [Metadata](#Metadata)
       * [Axulilary](#Axulilary)
+
   * [Example jupyter notebook analysis using reprocessed data](#Example-jupyter-notebook-analysis-using-reprocessed-data)
       * [1. Locating  variant and correlating with RNAseq and metadata](#Locating-variant-and-correlating-with-RNAseq-and-metadata)
       * [2. High resolution mouse developmental hierachy map](#High-resolution-mouse-developmental-hierachy-map)
       * [3. Simple RNAseq data slicing and hypothesis testing](#Simple-RNAseq-data-slicing-and-hypothesis-testing)
   * [Methods](#Methods)
       * [Slides](#Slides)
-  * [Pipeline](#Pipeline)
-      * [Metadata: Download, parse and merge SRA META DATA](./Pipelines/Update_SRA_meta_data/RunAll.ipynb)
-      * [Allelic read counts](./Pipelines/snp/RunAll.ipynb)
-      * [Transcript counting](./Pipelines/RNAseq/RunAll.ipynb)
-      * [Microbe read counting](./Microbiome/RunAll.ipynb)
+
   * [Acknowledgement](#Acknowledgement)
   * [Data format and coding style](#Data-format-and-coding-style)
   * [References](#References)
@@ -65,7 +67,7 @@ For examples, all the variant data and the data columns can be interpolated like
 
 
 
-# quick-installation-10-mins
+# Quick-installation-10-mins
 
 
 
@@ -129,6 +131,7 @@ All the metadtata files are located at sage synapse folder: https://www.synapse.
 | ---: | ----: | 
 | Distribution of data processed over time | [checkProgress.ipynb](./Pipelines/RNAseq/checkProgress.ipynb) | 
 |Generate RNAseq references| [generateReferences.ipynb](./RNAseq/generateReferences.ipynb)|
+|Check the distribution of the reprocessed data |[data_count.ipynb](./Analysis/data_count.ipynb)|
 
 # Example jupyter notebook analysis using reprocessed data
 
@@ -138,8 +141,7 @@ This is probably the best example that give you an idea on how to go from data s
 [jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/XGS_WGS/FindStudiesWithBrafV600Mutated.ipynb)
 
 ### High resolution mouse developmental hierachy map
-[jupyter notebook link](https://github.com/brianyiktaktsui/Skymap/blob/master/jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb
-)
+[jupyter notebook link](./jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb)
 
 Aggregating many studies (node) to form a smooth mouse developmental hierachy map. By integrating the vast amount of public data, we can cover many developmental time points, which sometime we can see a more transient expression dynamics both across tissues and within tissues over developmental time course. 
 
@@ -211,12 +213,6 @@ Here are the scripts:
 
 
 
-### Coverage
-|Code|
-|---|
-| [calculating reads coverage](./Pipelines/chip/calculate_unprocessed.py)|
-
-
 ### Metadata layout axuliary
 |Column | meaning|
 |: ---: | :---|
@@ -282,3 +278,303 @@ I tried to keep the code and parameters to be lean and self-explanatory for your
     -rw-r--r-- 1 btsui users  3.4M Oct  4 14:15 1520000.pickle.gz
     ls: write error: Broken pipe
 
+
+
+```python
+#!mkdir DEEP_NLP
+```
+
+
+```python
+#!find -name "TemporalQuery_V4_all_clean.ipynb"
+!find . -name "*pcr*.ipynb" -print
+
+```
+
+
+```python
+#!grep -rn "# of sequencing runs <br>with <b>transcript counts</b> profile extracted"
+!grep -r --include=\*.ipynb 'allSRS' ./
+```
+
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "|allSRS.index.get_level_values(0)| SRS ids|\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "|allSRS.index.get_level_values(1)| BioSample attribute|\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "|allSRS.values|textual annotation from submitters|"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      "-rw-r--r--  1 btsui users 2.1G Oct 13 15:52 allSRS.pickle\r\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      "-rw-r--r--  1 btsui users 169M Dec 15 21:48 allSRS.pickle.gz\r\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      "-rw-r--r--  1 btsui users 7.6M Nov 20 15:56 allSRS.with_processed_data.flat.pickle.gz\r\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      "-rw-r--r--  1 btsui users  26M Oct 16 16:50 allSRS.with_processed_data.pickle.gz\r\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS=pd.read_pickle(allSRS_pickle_dir)"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "scientificNameS=allSRS[allSRS.index.get_level_values(1)=='SCIENTIFIC_NAME']"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      "\u001b[0;32m<ipython-input-32-3f33375cd7a1>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mallSRS\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mallSRS\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mstr\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcontains\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'diabet'\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mcase\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mFalse\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS.head()"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "memoryS=allSRS.reset_index().memory_usage()"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "memoryS=allSRS.memory_usage()"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "print (\"# of samples retrieved:\",allSRS.index.get_level_values(0).nunique())"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "m_blood=allSRS.str.contains(query_keyword)\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "hitS=allSRS[m_blood]"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS.loc['ERS069382']"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "age_m=allSRS.index.get_level_values(1)=='age'\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS_age=allSRS[age_m]\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS_age.head()"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "print (\"# of samples:\",len(allSRS_age))"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "%time digitS=allSRS_age.str.extract(\"(\\d+)\",expand=False)\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "%time unitS=allSRS_age.str.extract(\"(month|day|year)\",expand=False)\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "ageAnnotDf=pd.DataFrame({'digit':digitS,'unit':unitS,'original_text':allSRS_age}).dropna()\n",
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "allSRS.index.get_level_values(1).nunique()"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "m=allSRS.str.contains('diabet',case=False)"
+    ./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    "tmpS=allSRS[m]"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "|allSRS.index.get_level_values(0)| SRS ids|\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "|allSRS.index.get_level_values(1)| BioSample attribute|\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "|allSRS.values|textual annotation from submitters|"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      "-rw-r--r--  1 btsui users 2.1G Oct 13 15:52 allSRS.pickle\r\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      "-rw-r--r--  1 btsui users 169M Dec 15 21:48 allSRS.pickle.gz\r\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      "-rw-r--r--  1 btsui users 7.6M Nov 20 15:56 allSRS.with_processed_data.flat.pickle.gz\r\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      "-rw-r--r--  1 btsui users  26M Oct 16 16:50 allSRS.with_processed_data.pickle.gz\r\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS=pd.read_pickle(allSRS_pickle_dir)"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "scientificNameS=allSRS[allSRS.index.get_level_values(1)=='SCIENTIFIC_NAME']"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      "\u001b[0;32m<ipython-input-32-3f33375cd7a1>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mallSRS\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mallSRS\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mstr\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcontains\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'diabet'\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mcase\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mFalse\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS.head()"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "memoryS=allSRS.reset_index().memory_usage()"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "memoryS=allSRS.memory_usage()"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "print (\"# of samples retrieved:\",allSRS.index.get_level_values(0).nunique())"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "m_blood=allSRS.str.contains(query_keyword)\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "hitS=allSRS[m_blood]"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS.loc['ERS069382']"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "age_m=allSRS.index.get_level_values(1)=='age'\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS_age=allSRS[age_m]\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS_age.head()"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "print (\"# of samples:\",len(allSRS_age))"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "%time digitS=allSRS_age.str.extract(\"(\\d+)\",expand=False)\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "%time unitS=allSRS_age.str.extract(\"(month|day|year)\",expand=False)\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "ageAnnotDf=pd.DataFrame({'digit':digitS,'unit':unitS,'original_text':allSRS_age}).dropna()\n",
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "allSRS.index.get_level_values(1).nunique()"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "m=allSRS.str.contains('diabet',case=False)"
+    ./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    "tmpS=allSRS[m]"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "%time allSRS_S=pd.read_pickle(\"/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz\")"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "allSRS_S.head()"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "allSRS_S.index.names=['SRS_ID','attribute']"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "attribute_array=allSRS_S.index.get_level_values('attribute')"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "%time primary_cancer_m=allSRS_S.str.contains('primary.*tumor|cancer',case=False)"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "cancer_m=allSRS_S.str.contains('oma',case=False)"
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "tissueS=allSRS_S[primary_cancer_m]\n",
+    ./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    "cellLineS=allSRS_S[celline_m]"
+    ./Analysis/ExampleSNPSliceForJisoo.ipynb:    "allSRSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'"
+    ./Analysis/ExampleSNPSliceForJisoo.ipynb:    "mySrsS=pd.read_pickle(allSRSDir)"
+    ./Analysis/README.ipynb:      "allSRS.pickle.gz\t\t\tsra_dump.fastqc.bowtie_algn.pickle\r\n",
+    ./Analysis/merge_variant_aligning_statistics.ipynb:      "README.ipynb:984:      \"allSRS.pickle.gz\\t\\t\\tsra_dump.fastqc.bowtie_algn.pickle\\r\\n\",\n",
+    ./Analysis/.ipynb_checkpoints/merge_variant_aligning_statistics-checkpoint.ipynb:      "README.ipynb:984:      \"allSRS.pickle.gz\\t\\t\\tsra_dump.fastqc.bowtie_algn.pickle\\r\\n\",\n",
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount-checkpoint.ipynb:    "allSRS_S=pd.read_pickle(\"/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz\")"
+    ./Analysis/.ipynb_checkpoints/ExampleSNPSliceForJisoo-checkpoint.ipynb:    "allSRSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'"
+    ./Analysis/.ipynb_checkpoints/ExampleSNPSliceForJisoo-checkpoint.ipynb:    "mySrsS=pd.read_pickle(allSRSDir)"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "%time allSRS_S=pd.read_pickle(\"/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz\")"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "allSRS_S.head()"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "allSRS_S.index.names=['SRS_ID','attribute']"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "attribute_array=allSRS_S.index.get_level_values('attribute')"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "%time primary_cancer_m=allSRS_S.str.contains('primary.*tumor|cancer',case=False)"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "cancer_m=allSRS_S.str.contains('oma',case=False)"
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "tissueS=allSRS_S[primary_cancer_m]\n",
+    ./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    "cellLineS=allSRS_S[celline_m]"
+    ./Analysis/.ipynb_checkpoints/SingleCellLeukemia-checkpoint.ipynb:    "metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n",
+    ./Analysis/.ipynb_checkpoints/SingleCellLeukemia-checkpoint.ipynb:    "metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n",
+    ./Analysis/SingleCellLeukemia.ipynb:    "metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n",
+    ./Analysis/SingleCellLeukemia.ipynb:    "metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n",
+    ./.ipynb_checkpoints/README-checkpoint.ipynb:    "| biospecieman annotations| allSRS.pickle.gz | [click me to view](./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)| python pandas pickle dataframe|\n",
+    ./NLP_spacy/.ipynb_checkpoints/Untitled-checkpoint.ipynb:    "sampleS=pd.read_pickle('/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle')"
+    ./NLP_spacy/Untitled.ipynb:    "sampleS=pd.read_pickle('/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle')"
+    ./DEEP_NLP/.ipynb_checkpoints/EmbeddingGeneration-checkpoint.ipynb:    "inS_dir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n",
+    ./DEEP_NLP/EmbeddingGeneration.ipynb:    "inS_dir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n",
+    ./README.ipynb:    "| biospecieman annotations| allSRS.pickle.gz | [click me to view](./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)| python pandas pickle dataframe|\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"|allSRS.index.get_level_values(0)| SRS ids|\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"|allSRS.index.get_level_values(1)| BioSample attribute|\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"|allSRS.values|textual annotation from submitters|\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      \"-rw-r--r--  1 btsui users 2.1G Oct 13 15:52 allSRS.pickle\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      \"-rw-r--r--  1 btsui users 169M Dec 15 21:48 allSRS.pickle.gz\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      \"-rw-r--r--  1 btsui users 7.6M Nov 20 15:56 allSRS.with_processed_data.flat.pickle.gz\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      \"-rw-r--r--  1 btsui users  26M Oct 16 16:50 allSRS.with_processed_data.pickle.gz\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS=pd.read_pickle(allSRS_pickle_dir)\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"scientificNameS=allSRS[allSRS.index.get_level_values(1)=='SCIENTIFIC_NAME']\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:      \"\\u001b[0;32m<ipython-input-32-3f33375cd7a1>\\u001b[0m in \\u001b[0;36m<module>\\u001b[0;34m()\\u001b[0m\\n\\u001b[0;32m----> 1\\u001b[0;31m \\u001b[0mallSRS\\u001b[0m\\u001b[0;34m[\\u001b[0m\\u001b[0mallSRS\\u001b[0m\\u001b[0;34m.\\u001b[0m\\u001b[0mstr\\u001b[0m\\u001b[0;34m.\\u001b[0m\\u001b[0mcontains\\u001b[0m\\u001b[0;34m(\\u001b[0m\\u001b[0;34m'diabet'\\u001b[0m\\u001b[0;34m,\\u001b[0m\\u001b[0mcase\\u001b[0m\\u001b[0;34m=\\u001b[0m\\u001b[0;32mFalse\\u001b[0m\\u001b[0;34m)\\u001b[0m\\u001b[0;34m]\\u001b[0m\\u001b[0;34m\\u001b[0m\\u001b[0m\\n\\u001b[0m\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS.head()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"memoryS=allSRS.reset_index().memory_usage()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"memoryS=allSRS.memory_usage()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"print (\\\"# of samples retrieved:\\\",allSRS.index.get_level_values(0).nunique())\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"m_blood=allSRS.str.contains(query_keyword)\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"hitS=allSRS[m_blood]\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS.loc['ERS069382']\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"age_m=allSRS.index.get_level_values(1)=='age'\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS_age=allSRS[age_m]\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS_age.head()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"print (\\\"# of samples:\\\",len(allSRS_age))\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"%time digitS=allSRS_age.str.extract(\\\"(\\\\d+)\\\",expand=False)\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"%time unitS=allSRS_age.str.extract(\\\"(month|day|year)\\\",expand=False)\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"ageAnnotDf=pd.DataFrame({'digit':digitS,'unit':unitS,'original_text':allSRS_age}).dropna()\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"allSRS.index.get_level_values(1).nunique()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"m=allSRS.str.contains('diabet',case=False)\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb:    \"tmpS=allSRS[m]\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"|allSRS.index.get_level_values(0)| SRS ids|\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"|allSRS.index.get_level_values(1)| BioSample attribute|\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"|allSRS.values|textual annotation from submitters|\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      \"-rw-r--r--  1 btsui users 2.1G Oct 13 15:52 allSRS.pickle\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      \"-rw-r--r--  1 btsui users 169M Dec 15 21:48 allSRS.pickle.gz\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      \"-rw-r--r--  1 btsui users 7.6M Nov 20 15:56 allSRS.with_processed_data.flat.pickle.gz\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      \"-rw-r--r--  1 btsui users  26M Oct 16 16:50 allSRS.with_processed_data.pickle.gz\\r\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS=pd.read_pickle(allSRS_pickle_dir)\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"scientificNameS=allSRS[allSRS.index.get_level_values(1)=='SCIENTIFIC_NAME']\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:      \"\\u001b[0;32m<ipython-input-32-3f33375cd7a1>\\u001b[0m in \\u001b[0;36m<module>\\u001b[0;34m()\\u001b[0m\\n\\u001b[0;32m----> 1\\u001b[0;31m \\u001b[0mallSRS\\u001b[0m\\u001b[0;34m[\\u001b[0m\\u001b[0mallSRS\\u001b[0m\\u001b[0;34m.\\u001b[0m\\u001b[0mstr\\u001b[0m\\u001b[0;34m.\\u001b[0m\\u001b[0mcontains\\u001b[0m\\u001b[0;34m(\\u001b[0m\\u001b[0;34m'diabet'\\u001b[0m\\u001b[0;34m,\\u001b[0m\\u001b[0mcase\\u001b[0m\\u001b[0;34m=\\u001b[0m\\u001b[0;32mFalse\\u001b[0m\\u001b[0;34m)\\u001b[0m\\u001b[0;34m]\\u001b[0m\\u001b[0;34m\\u001b[0m\\u001b[0m\\n\\u001b[0m\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS.head()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"memoryS=allSRS.reset_index().memory_usage()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"memoryS=allSRS.memory_usage()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"print (\\\"# of samples retrieved:\\\",allSRS.index.get_level_values(0).nunique())\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"m_blood=allSRS.str.contains(query_keyword)\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"hitS=allSRS[m_blood]\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS.loc['ERS069382']\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"age_m=allSRS.index.get_level_values(1)=='age'\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS_age=allSRS[age_m]\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS_age.head()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"print (\\\"# of samples:\\\",len(allSRS_age))\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"%time digitS=allSRS_age.str.extract(\\\"(\\\\d+)\\\",expand=False)\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"%time unitS=allSRS_age.str.extract(\\\"(month|day|year)\\\",expand=False)\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"ageAnnotDf=pd.DataFrame({'digit':digitS,'unit':unitS,'original_text':allSRS_age}).dropna()\\n\",\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"allSRS.index.get_level_values(1).nunique()\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"m=allSRS.str.contains('diabet',case=False)\"\n",
+    ./README.ipynb:      "./clean_notebooks/ExampleDataLoading/.ipynb_checkpoints/loadInMetaData-checkpoint.ipynb:    \"tmpS=allSRS[m]\"\n"
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"%time allSRS_S=pd.read_pickle(\\\"/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz\\\")\"\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"allSRS_S.head()\"\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"allSRS_S.index.names=['SRS_ID','attribute']\"\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"attribute_array=allSRS_S.index.get_level_values('attribute')\"\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"%time primary_cancer_m=allSRS_S.str.contains('primary.*tumor|cancer',case=False)\"\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"cancer_m=allSRS_S.str.contains('oma',case=False)\"\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"tissueS=allSRS_S[primary_cancer_m]\\n\",\n",
+    ./README.ipynb:      "./Analysis/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines.ipynb:    \"cellLineS=allSRS_S[celline_m]\"\n",
+    ./README.ipynb:      "./Analysis/ExampleSNPSliceForJisoo.ipynb:    \"allSRSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\"\n",
+    ./README.ipynb:      "./Analysis/ExampleSNPSliceForJisoo.ipynb:    \"mySrsS=pd.read_pickle(allSRSDir)\"\n",
+    ./README.ipynb:      "./Analysis/README.ipynb:      \"allSRS.pickle.gz\\t\\t\\tsra_dump.fastqc.bowtie_algn.pickle\\r\\n\",\n",
+    ./README.ipynb:      "./Analysis/merge_variant_aligning_statistics.ipynb:      \"README.ipynb:984:      \\\"allSRS.pickle.gz\\\\t\\\\t\\\\tsra_dump.fastqc.bowtie_algn.pickle\\\\r\\\\n\\\",\\n\",\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/merge_variant_aligning_statistics-checkpoint.ipynb:      \"README.ipynb:984:      \\\"allSRS.pickle.gz\\\\t\\\\t\\\\tsra_dump.fastqc.bowtie_algn.pickle\\\\r\\\\n\\\",\\n\",\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount-checkpoint.ipynb:    \"allSRS_S=pd.read_pickle(\\\"/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz\\\")\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/ExampleSNPSliceForJisoo-checkpoint.ipynb:    \"allSRSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/ExampleSNPSliceForJisoo-checkpoint.ipynb:    \"mySrsS=pd.read_pickle(allSRSDir)\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"%time allSRS_S=pd.read_pickle(\\\"/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz\\\")\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"allSRS_S.head()\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"allSRS_S.index.names=['SRS_ID','attribute']\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"attribute_array=allSRS_S.index.get_level_values('attribute')\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"%time primary_cancer_m=allSRS_S.str.contains('primary.*tumor|cancer',case=False)\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"cancer_m=allSRS_S.str.contains('oma',case=False)\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"tissueS=allSRS_S[primary_cancer_m]\\n\",\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/getBasicDataCounting_AllelicReadCount_PrimaryVsCelllines-checkpoint.ipynb:    \"cellLineS=allSRS_S[celline_m]\"\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/SingleCellLeukemia-checkpoint.ipynb:    \"metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\\n\",\n",
+    ./README.ipynb:      "./Analysis/.ipynb_checkpoints/SingleCellLeukemia-checkpoint.ipynb:    \"metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\\n\",\n",
+    ./README.ipynb:      "./Analysis/SingleCellLeukemia.ipynb:    \"metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\\n\",\n",
+    ./README.ipynb:      "./Analysis/SingleCellLeukemia.ipynb:    \"metaDataMappingSDir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\\n\",\n",
+    ./README.ipynb:      "./.ipynb_checkpoints/README-checkpoint.ipynb:    \"| biospecieman annotations| allSRS.pickle.gz | [click me to view](./clean_notebooks/ExampleDataLoading/loadInMetaData.ipynb)| python pandas pickle dataframe|\\n\",\n",
+    ./README.ipynb:      "./NLP_spacy/.ipynb_checkpoints/Untitled-checkpoint.ipynb:    \"sampleS=pd.read_pickle('/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle')\"\n",
+    ./README.ipynb:      "./NLP_spacy/Untitled.ipynb:    \"sampleS=pd.read_pickle('/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle')\"\n",
+    ./README.ipynb:      "./DEEP_NLP/.ipynb_checkpoints/EmbeddingGeneration-checkpoint.ipynb:    \"inS_dir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\\n\",\n",
+    ./README.ipynb:      "./DEEP_NLP/EmbeddingGeneration.ipynb:    \"inS_dir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\\n\",\n"
+    ./README.ipynb:    "!grep -r --include=\\*.ipynb 'allSRS' ./"
+    ./XGS_WGS/uploadMetaDataToSynapseList.ipynb:    "uploadDirs=['/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz',\n",
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\n",
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "allSRS=pd.read_pickle(allSRS_pickle_dir)"
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "allSRS_specie=allSRS[allSRS.index.get_level_values(0).isin(mySpecieSrs)]"
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "query_m=allSRS_specie.str.contains('V600E',case=False)\n"
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "allSRSWithGenotypes=allSRS_specie.sample(n=10)#[query_m]"
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "allSRSWithGenotypes"
+    ./XGS_WGS/checkSubsetOfMouseAllelicReadCountData.ipynb:    "sample_m=sra_dump_pickle_df.Sample.isin(allSRSWithGenotypes.index.get_level_values(0))\n",
+    ./XGS_WGS/.ipynb_checkpoints/uploadMetaDataToSynapseList-checkpoint.ipynb:    "uploadDirs=['/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz',\n",
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:    "allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\n",
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:    "allSRS=pd.read_pickle(allSRS_pickle_dir)"
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:    "allSRS_specie=allSRS[allSRS.index.get_level_values(0).isin(mySpecieSrs)]"
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:      "\u001b[0;32m<ipython-input-929-85f2763c0099>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mquery_m\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mallSRS_specie\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mstr\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcontains\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'tp53.*+/+'\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mcase\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mFalse\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:    "query_m=allSRS_specie.str.contains('tp53.*+/+',case=False)\n"
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:    "allSRSWithGenotypes=allSRS_specie[query_m]"
+    ./XGS_WGS/.ipynb_checkpoints/checkSubsetOfMouseAllelicReadCountData-checkpoint.ipynb:    "sample_m=sra_dump_pickle_df.Sample.isin(allSRSWithGenotypes.index.get_level_values(0))\n",
+    ./XGS_WGS/.ipynb_checkpoints/uploadDataToSynapseList-checkpoint.ipynb:      "allSRS.pickle.gz\t\t\tsra_dump.fastqc.bowtie_algn.pickle\r\n",
+    ./Pipelines/Update_SRA_meta_data/RunAll.ipynb:    "|merge SRA metadata | [merge SRS and SRX parsed](./../../SRA_META/SRAmerge.ipynb)| | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|\n",
+    ./Pipelines/Update_SRA_meta_data/RunAll.ipynb:    "#!gunzip --keep /data/cellardata/users/btsui/SRA/DUMP/allSRS.pickle.gz"
+    ./Pipelines/Update_SRA_meta_data/RunAll.ipynb:    "#allSRS=pd.read_pickle('/data/cellardata/users/btsui/SRA/DUMP/allSRS.pickle')"
+    ./Pipelines/Update_SRA_meta_data/RunAll.ipynb:    "#allSRS.index.get_level_values(0).nunique()"
+    ./Pipelines/Update_SRA_meta_data/annotate_SRA_meta_data.ipynb:    "srsMergedS=pd.read_pickle(basePickleDir+'allSRS.pickle.gz')\n",
+    ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb:       "8                allSRS.with_processed_data.pickle.gz\n",
+    ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb:       "9           allSRS.with_processed_data.flat.pickle.gz\n",
+    ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb:       "12                                      allSRS.pickle\n",
+    ./Pipelines/Update_SRA_meta_data/pull_SRA_meta.ipynb:       "18                                   allSRS.pickle.gz\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/pull_SRA_meta-checkpoint.ipynb:       "8                allSRS.with_processed_data.pickle.gz\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/pull_SRA_meta-checkpoint.ipynb:       "9           allSRS.with_processed_data.flat.pickle.gz\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/pull_SRA_meta-checkpoint.ipynb:       "12                                      allSRS.pickle\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/pull_SRA_meta-checkpoint.ipynb:       "18                                   allSRS.pickle.gz\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/annotate_SRA_meta_data-checkpoint.ipynb:    "srsMergedS=pd.read_pickle(basePickleDir+'allSRS.pickle.gz')\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/ExportForMetamap-checkpoint.ipynb:    "srsMergedS=pd.read_pickle(basePickleDir+'allSRS.pickle.gz')\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS_with_processed_data_flat_dir=allSRS_pickle_dir.replace('.pickle.gz','.with_processed_data.flat.pickle.gz')"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS_with_processed_data_dir=allSRS_pickle_dir.replace('.pickle.gz','.with_processed_data.pickle.gz')"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS=pd.read_pickle(allSRS_pickle_dir)"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "#tmpS1=allSRS+';'"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "srs_a=allSRS.index.get_level_values(0)\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS_processed=allSRS[srs_m]"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "#allSRS_processed.index.names"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS_processed.to_pickle(allSRS_with_processed_data_dir)"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "tmpS2=pd.Series(data=allSRS_processed.index.get_level_values(1)+\": \"+allSRS_processed.astype(str)+plotlyLineBreaker,\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "         index=allSRS_processed.index)"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "#tmpS1=(allSRS_processed.astype(str)+'; ')\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "%time allSRS_processed_flat=tmpS2.groupby(level=[0]).sum()"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "allSRS_processed_flat.to_pickle(allSRS_with_processed_data_flat_dir)"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "#allSRS_processed_flat"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "#m1=allSRS_processed_flat.str.contains('neuron.*single.*cell')"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "#m2=allSRS_processed_flat.str.contains('single.*cell.*neuron|neuron.*single.*cell')#.sum()"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "uploadDirs=[sra_dump_pickle_dir,allSRS_pickle_dir,allSRX_pickle_dir,merged_kallisto_run_info_dir,\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "            allSRS_with_processed_data_dir,sra_project_titles_dir,sra_dump_pickle_all_dir,\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:    "           allSRS_with_processed_data_flat_dir,vcfDir]+snpBedDirs\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:      " rsync  -Pvu -e \"ssh -i $HOME/.ssh/jupyter_hub.pem\" /cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz admin@ec2-34-219-169-70.us-west-2.compute.amazonaws.com:~/efs/all_seq/meta_data/.\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/upload_AWS-checkpoint.ipynb:      " rsync  -Pvu -e \"ssh -i $HOME/.ssh/jupyter_hub.pem\" /cellar/users/btsui/Data/SRA/DUMP/allSRS.with_processed_data.pickle.gz admin@ec2-34-219-169-70.us-west-2.compute.amazonaws.com:~/efs/all_seq/meta_data/.\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/RunAll-checkpoint.ipynb:    "|merge SRA metadata | [merge SRS and SRX parsed](./../../SRA_META/SRAmerge.ipynb)| | list of pandas series containing list of (SRS,attribute, freetext) |/cellar/users/btsui/Data/nrnb01_nobackup/tmp/METAMAP//splittedInput_SRAMangaer_SRA_META/(allSRS.pickle,allSRX.pickle) |all SRA SRS biospecieman annotation in allSRS.pickle and allSRX.pickle  | /cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/ | 10 mins| Python 3|\n",
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/RunAll-checkpoint.ipynb:    "#!gunzip --keep /data/cellardata/users/btsui/SRA/DUMP/allSRS.pickle.gz"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/RunAll-checkpoint.ipynb:    "#allSRS=pd.read_pickle('/data/cellardata/users/btsui/SRA/DUMP/allSRS.pickle')"
+    ./Pipelines/Update_SRA_meta_data/.ipynb_checkpoints/RunAll-checkpoint.ipynb:    "#allSRS.index.get_level_values(0).nunique()"
+    ./Pipelines/Update_SRA_meta_data/ExportForMetamap.ipynb:    "srsMergedS=pd.read_pickle(basePickleDir+'allSRS.pickle.gz')\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS_pickle_dir='/cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz'\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS_with_processed_data_flat_dir=allSRS_pickle_dir.replace('.pickle.gz','.with_processed_data.flat.pickle.gz')"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS_with_processed_data_dir=allSRS_pickle_dir.replace('.pickle.gz','.with_processed_data.pickle.gz')"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS=pd.read_pickle(allSRS_pickle_dir)"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "srs_a=allSRS.index.get_level_values(0)\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS_processed=allSRS[srs_m]"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "#allSRS_processed.index.names"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS_processed.to_pickle(allSRS_with_processed_data_dir)"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "tmpS2=pd.Series(data=allSRS_processed.index.get_level_values(1)+\": \"+allSRS_processed.astype(str)+plotlyLineBreaker,\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "         index=allSRS_processed.index)"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "#tmpS1=(allSRS_processed.astype(str)+'; ')\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "%time allSRS_processed_flat=tmpS2.groupby(level=[0]).sum()"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "allSRS_processed_flat.to_pickle(allSRS_with_processed_data_flat_dir)"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "#allSRS_processed_flat"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "#m1=allSRS_processed_flat.str.contains('neuron.*single.*cell')"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "#m2=allSRS_processed_flat.str.contains('single.*cell.*neuron|neuron.*single.*cell')#.sum()"
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "uploadDirs=[sra_dump_pickle_dir,allSRS_pickle_dir,allSRX_pickle_dir,merged_kallisto_run_info_dir,\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "            allSRS_with_processed_data_dir,sra_project_titles_dir,sra_dump_pickle_all_dir,\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:    "           allSRS_with_processed_data_flat_dir,vcfDir]+snpBedDirs\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:      " rsync  -Pvu -e \"ssh -i $HOME/.ssh/jupyter_hub.pem\" /cellar/users/btsui/Data/SRA/DUMP/allSRS.pickle.gz admin@ec2-34-219-169-70.us-west-2.compute.amazonaws.com:~/efs/all_seq/meta_data/.\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:      " rsync  -Pvu -e \"ssh -i $HOME/.ssh/jupyter_hub.pem\" /cellar/users/btsui/Data/SRA/DUMP/allSRS.with_processed_data.pickle.gz admin@ec2-34-219-169-70.us-west-2.compute.amazonaws.com:~/efs/all_seq/meta_data/.\n",
+    ./Pipelines/Update_SRA_meta_data/upload_AWS.ipynb:      " rsync  -Pvu -e \"ssh -i $HOME/.ssh/jupyter_hub.pem\" /cellar/users/btsui/Data/SRA/DUMP/allSRS.with_processed_data.flat.pickle.gz admin@ec2-34-219-169-70.us-west-2.compute.amazonaws.com:~/efs/all_seq/meta_data/.\n",
+    ./Pipelines/RNAseq/RunAll.ipynb:      "-rw-r--r--  1 btsui users 2.1G Oct 13 15:52 allSRS.pickle\r\n",
+    ./Pipelines/RNAseq/RunAll.ipynb:      "-rw-r--r--  1 btsui users 169M Dec 15 21:48 allSRS.pickle.gz\r\n",
+    ./Pipelines/RNAseq/RunAll.ipynb:      "-rw-r--r--  1 btsui users 7.6M Nov 20 15:56 allSRS.with_processed_data.flat.pickle.gz\r\n",
+    ./Pipelines/RNAseq/RunAll.ipynb:      "-rw-r--r--  1 btsui users  26M Oct 16 16:50 allSRS.with_processed_data.pickle.gz\r\n",
+    ./SRA_META/.ipynb_checkpoints/SRAmerge-checkpoint.ipynb:    "srsMergedS.to_pickle(baseOutDir+'allSRS.pickle.gz')\n",
+    ./SRA_META/SRAmerge.ipynb:    "srsMergedS.to_pickle(baseOutDir+'allSRS.pickle.gz')\n",
+    ./jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb:    "#'/cellar/users/btsui/Data/' allSRS.pickle\n",
+    ./jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb:    "#!find /cellar/users/btsui/Data/ -name \"allSRS.pickle\" -print\n",
+    ./jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb:    "inS_dir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n"
+    ./jupyter-notebooks/clean_notebooks/.ipynb_checkpoints/TemporalQuery_V4_all_clean-checkpoint.ipynb:    "#'/cellar/users/btsui/Data/' allSRS.pickle\n",
+    ./jupyter-notebooks/clean_notebooks/.ipynb_checkpoints/TemporalQuery_V4_all_clean-checkpoint.ipynb:    "#!find /cellar/users/btsui/Data/ -name \"allSRS.pickle\" -print\n",
+    ./jupyter-notebooks/clean_notebooks/.ipynb_checkpoints/TemporalQuery_V4_all_clean-checkpoint.ipynb:    "inS_dir='/cellar/users/btsui/Data/nrnb01_nobackup/METAMAP/allSRS.pickle'\n"
+    ./Skymap_legacy-master/jupyter-notebooks/clean_notebooks/TemporalQuery_V4_all_clean.ipynb:    "rawAnnotSrsDir='../../Parsing/allSRS.pickle'\n",
+    ./Skymap_legacy-master/Load_RawMetaData.ipynb:    "sampleRawAnnotS_Dir='./meta_data/allSRS.pickle'\n",
+
+
+
+```python
+#!qstat -u btsui
+```
